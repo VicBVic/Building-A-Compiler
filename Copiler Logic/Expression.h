@@ -13,6 +13,7 @@ private:
 	int memberCount;
 public:
 	Expression(Variable defaultVal);
+	Expression();
 	void push_back(Expression* newMember, Operand operation);
 	Variable evaluate();
 };

@@ -9,6 +9,9 @@ public:
 		MULTIPLY,
 		DIVIDE
 	};
-	int type = UNDEFINED;
+	int type;
+	Operand(int type);
+	Operand();
+
 };
 

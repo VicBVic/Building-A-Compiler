@@ -3,6 +3,7 @@
 
 Expression::Expression(const Variable defaultVal)
 {
+    members[0] = nullptr;
     memberCount = 0;
     this->defaultVal = defaultVal;
 }
@@ -11,6 +12,13 @@ void Expression::push_back(Expression* newMember, Operand operation)
     members[memberCount] = newMember;
     operations[memberCount] = operation;
     memberCount++;
+}
+
+Expression::Expression()
+{
+    members[0] = nullptr;
+    memberCount = 0;
+    this->defaultVal = -99; //trebuie inlocuit
 }
 
 Variable Expression::evaluate()
