@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "DataType.h"
+
 class Trie
 {
 private:

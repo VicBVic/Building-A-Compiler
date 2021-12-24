@@ -1,6 +1,7 @@
 #pragma once
 #include "Variable.h"
 #include "Function.h"
+
 class DataType
 {
 private:
