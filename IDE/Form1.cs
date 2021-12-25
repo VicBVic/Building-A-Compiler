@@ -16,5 +16,20 @@ namespace IDE
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextBox_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ProjectList_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
