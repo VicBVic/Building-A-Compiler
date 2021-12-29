@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Copiler Logic", "Copiler Lo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDE", "IDE\IDE.csproj", "{A65F50B9-7A89-457C-A51F-7F9646BCE43C}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{F088D31E-3CE1-46B2-9EBF-8B4F462BE8C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Compiler|Any CPU = Compiler|Any CPU
@@ -67,6 +69,18 @@ Global
 		{A65F50B9-7A89-457C-A51F-7F9646BCE43C}.Release|x64.Build.0 = Release|Any CPU
 		{A65F50B9-7A89-457C-A51F-7F9646BCE43C}.Release|x86.ActiveCfg = Release|Any CPU
 		{A65F50B9-7A89-457C-A51F-7F9646BCE43C}.Release|x86.Build.0 = Release|Any CPU
+		{F088D31E-3CE1-46B2-9EBF-8B4F462BE8C5}.Compiler|Any CPU.ActiveCfg = Debug
+		{F088D31E-3CE1-46B2-9EBF-8B4F462BE8C5}.Compiler|x64.ActiveCfg = Debug
+		{F088D31E-3CE1-46B2-9EBF-8B4F462BE8C5}.Compiler|x86.ActiveCfg = Debug
+		{F088D31E-3CE1-46B2-9EBF-8B4F462BE8C5}.Debug|Any CPU.ActiveCfg = Debug
+		{F088D31E-3CE1-46B2-9EBF-8B4F462BE8C5}.Debug|x64.ActiveCfg = Debug
+		{F088D31E-3CE1-46B2-9EBF-8B4F462BE8C5}.Debug|x86.ActiveCfg = Debug
+		{F088D31E-3CE1-46B2-9EBF-8B4F462BE8C5}.IDE|Any CPU.ActiveCfg = Debug
+		{F088D31E-3CE1-46B2-9EBF-8B4F462BE8C5}.IDE|x64.ActiveCfg = Debug
+		{F088D31E-3CE1-46B2-9EBF-8B4F462BE8C5}.IDE|x86.ActiveCfg = Debug
+		{F088D31E-3CE1-46B2-9EBF-8B4F462BE8C5}.Release|Any CPU.ActiveCfg = Release
+		{F088D31E-3CE1-46B2-9EBF-8B4F462BE8C5}.Release|x64.ActiveCfg = Release
+		{F088D31E-3CE1-46B2-9EBF-8B4F462BE8C5}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
