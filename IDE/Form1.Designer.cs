@@ -30,102 +30,109 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.TextBox = new FastColoredTextBoxNS.FastColoredTextBox();
-            this.ProjectList = new System.Windows.Forms.FlowLayoutPanel();
+            this.mainSplitter = new System.Windows.Forms.SplitContainer();
+            this.panouGeneral = new System.Windows.Forms.FlowLayoutPanel();
+            this.splitterSecundar = new System.Windows.Forms.SplitContainer();
+            this.splitterFTC = new System.Windows.Forms.SplitContainer();
+            this.projectList = new System.Windows.Forms.FlowLayoutPanel();
+            this.FTC = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.panouFTC = new System.Windows.Forms.FlowLayoutPanel();
             this.run = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel1.SuspendLayout();
-            this.splitContainer3.Panel2.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TextBox)).BeginInit();
-            this.ProjectList.SuspendLayout();
+            this.add = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.mainSplitter)).BeginInit();
+            this.mainSplitter.Panel1.SuspendLayout();
+            this.mainSplitter.Panel2.SuspendLayout();
+            this.mainSplitter.SuspendLayout();
+            this.panouGeneral.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitterSecundar)).BeginInit();
+            this.splitterSecundar.Panel1.SuspendLayout();
+            this.splitterSecundar.Panel2.SuspendLayout();
+            this.splitterSecundar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitterFTC)).BeginInit();
+            this.splitterFTC.Panel1.SuspendLayout();
+            this.splitterFTC.Panel2.SuspendLayout();
+            this.splitterFTC.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FTC)).BeginInit();
+            this.panouFTC.SuspendLayout();
             this.SuspendLayout();
+            this.Resize += new System.EventHandler(this.ResizeForm);
             // 
-            // splitContainer1
+            // mainSplitter
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.mainSplitter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.mainSplitter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainSplitter.Location = new System.Drawing.Point(0, 0);
+            this.mainSplitter.Name = "mainSplitter";
+            this.mainSplitter.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer1.Panel1
+            // mainSplitter.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.flowLayoutPanel2);
+            this.mainSplitter.Panel1.Controls.Add(this.panouGeneral);
             // 
-            // splitContainer1.Panel2
+            // mainSplitter.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 450);
-            this.splitContainer1.SplitterDistance = 25;
-            this.splitContainer1.TabIndex = 2;
+            this.mainSplitter.Panel2.Controls.Add(this.splitterSecundar);
+            this.mainSplitter.Size = new System.Drawing.Size(800, 450);
+            this.mainSplitter.SplitterDistance = 25;
+            this.mainSplitter.TabIndex = 2;
             // 
-            // flowLayoutPanel2
+            // panouGeneral
             // 
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(800, 25);
-            this.flowLayoutPanel2.TabIndex = 1;
+            this.panouGeneral.Controls.Add(this.add);
+            this.panouGeneral.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panouGeneral.Location = new System.Drawing.Point(0, 0);
+            this.panouGeneral.Name = "panouGeneral";
+            this.panouGeneral.Size = new System.Drawing.Size(798, 23);
+            this.panouGeneral.TabIndex = 1;
             // 
-            // splitContainer2
+            // splitterSecundar
             // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
+            this.splitterSecundar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitterSecundar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitterSecundar.Location = new System.Drawing.Point(0, 0);
+            this.splitterSecundar.Name = "splitterSecundar";
             // 
-            // splitContainer2.Panel1
+            // splitterSecundar.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.flowLayoutPanel1);
+            this.splitterSecundar.Panel1.Controls.Add(this.projectList);
             // 
-            // splitContainer2.Panel2
+            // splitterSecundar.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Size = new System.Drawing.Size(800, 421);
-            this.splitContainer2.SplitterDistance = 100;
-            this.splitContainer2.TabIndex = 2;
+            this.splitterSecundar.Panel2.Controls.Add(this.splitterFTC);
+            this.splitterSecundar.Size = new System.Drawing.Size(800, 421);
+            this.splitterSecundar.SplitterDistance = 100;
+            this.splitterSecundar.TabIndex = 2;
             // 
-            // splitContainer3
+            // splitterFTC
             // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.splitterFTC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitterFTC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitterFTC.Location = new System.Drawing.Point(0, 0);
+            this.splitterFTC.Name = "splitterFTC";
+            this.splitterFTC.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer3.Panel1
+            // splitterFTC.Panel1
             // 
-            this.splitContainer3.Panel1.Controls.Add(this.ProjectList);
+            this.splitterFTC.Panel1.Controls.Add(this.panouFTC);
             // 
-            // splitContainer3.Panel2
+            // splitterFTC.Panel2
             // 
-            this.splitContainer3.Panel2.Controls.Add(this.TextBox);
-            this.splitContainer3.Size = new System.Drawing.Size(696, 421);
-            this.splitContainer3.SplitterDistance = 26;
-            this.splitContainer3.TabIndex = 1;
+            this.splitterFTC.Panel2.Controls.Add(this.FTC);
+            this.splitterFTC.Size = new System.Drawing.Size(696, 421);
+            this.splitterFTC.SplitterDistance = 26;
+            this.splitterFTC.TabIndex = 1;
             // 
-            // flowLayoutPanel1
+            // projectList
             // 
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(100, 421);
-            this.flowLayoutPanel1.TabIndex = 3;
+            this.projectList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.projectList.Location = new System.Drawing.Point(0, 0);
+            this.projectList.Name = "projectList";
+            this.projectList.Size = new System.Drawing.Size(98, 419);
+            this.projectList.TabIndex = 3;
             // 
-            // TextBox
+            // FTC
             // 
-            this.TextBox.AutoCompleteBracketsList = new char[] {
+            this.FTC.AutoCompleteBracketsList = new char[] {
         '(',
         ')',
         '{',
@@ -136,35 +143,35 @@
         '\"',
         '\'',
         '\''};
-            this.TextBox.AutoScrollMinSize = new System.Drawing.Size(221, 18);
-            this.TextBox.BackBrush = null;
-            this.TextBox.CharHeight = 18;
-            this.TextBox.CharWidth = 10;
-            this.TextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TextBox.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.TextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TextBox.ForeColor = System.Drawing.Color.Coral;
-            this.TextBox.IsReplaceMode = false;
-            this.TextBox.Location = new System.Drawing.Point(0, 0);
-            this.TextBox.Margin = new System.Windows.Forms.Padding(5);
-            this.TextBox.Name = "TextBox";
-            this.TextBox.Paddings = new System.Windows.Forms.Padding(0);
-            this.TextBox.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.TextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("TextBox.ServiceColors")));
-            this.TextBox.Size = new System.Drawing.Size(696, 391);
-            this.TextBox.TabIndex = 2;
-            this.TextBox.Text = "fastColoredTextBox1";
-            this.TextBox.Zoom = 100;
+            this.FTC.AutoScrollMinSize = new System.Drawing.Size(221, 18);
+            this.FTC.BackBrush = null;
+            this.FTC.CharHeight = 18;
+            this.FTC.CharWidth = 10;
+            this.FTC.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.FTC.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.FTC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FTC.ForeColor = System.Drawing.Color.Coral;
+            this.FTC.IsReplaceMode = false;
+            this.FTC.Location = new System.Drawing.Point(0, 0);
+            this.FTC.Margin = new System.Windows.Forms.Padding(5);
+            this.FTC.Name = "FTC";
+            this.FTC.Paddings = new System.Windows.Forms.Padding(0);
+            this.FTC.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.FTC.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("FTC.ServiceColors")));
+            this.FTC.Size = new System.Drawing.Size(694, 389);
+            this.FTC.TabIndex = 2;
+            this.FTC.Text = "fastColoredTextBox1";
+            this.FTC.Zoom = 100;
             // 
-            // ProjectList
+            // panouFTC
             // 
-            this.ProjectList.Controls.Add(this.run);
-            this.ProjectList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ProjectList.Location = new System.Drawing.Point(0, 0);
-            this.ProjectList.Margin = new System.Windows.Forms.Padding(5);
-            this.ProjectList.Name = "ProjectList";
-            this.ProjectList.Size = new System.Drawing.Size(696, 26);
-            this.ProjectList.TabIndex = 1;
+            this.panouFTC.Controls.Add(this.run);
+            this.panouFTC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panouFTC.Location = new System.Drawing.Point(0, 0);
+            this.panouFTC.Margin = new System.Windows.Forms.Padding(5);
+            this.panouFTC.Name = "panouFTC";
+            this.panouFTC.Size = new System.Drawing.Size(694, 24);
+            this.panouFTC.TabIndex = 1;
             // 
             // run
             // 
@@ -175,43 +182,55 @@
             this.run.Text = "Run";
             this.run.UseVisualStyleBackColor = true;
             // 
+            // add
+            // 
+            this.add.Location = new System.Drawing.Point(3, 3);
+            this.add.Name = "add";
+            this.add.Size = new System.Drawing.Size(50, 25);
+            this.add.TabIndex = 0;
+            this.add.Text = "Add";
+            this.add.UseVisualStyleBackColor = true;
+            this.add.Click += new System.EventHandler(this.add_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.mainSplitter);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "IDERV";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
-            this.splitContainer3.Panel1.ResumeLayout(false);
-            this.splitContainer3.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.TextBox)).EndInit();
-            this.ProjectList.ResumeLayout(false);
+            this.mainSplitter.Panel1.ResumeLayout(false);
+            this.mainSplitter.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.mainSplitter)).EndInit();
+            this.mainSplitter.ResumeLayout(false);
+            this.panouGeneral.ResumeLayout(false);
+            this.splitterSecundar.Panel1.ResumeLayout(false);
+            this.splitterSecundar.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitterSecundar)).EndInit();
+            this.splitterSecundar.ResumeLayout(false);
+            this.splitterFTC.Panel1.ResumeLayout(false);
+            this.splitterFTC.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitterFTC)).EndInit();
+            this.splitterFTC.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.FTC)).EndInit();
+            this.panouFTC.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.SplitContainer splitContainer3;
-        private System.Windows.Forms.FlowLayoutPanel ProjectList;
+        private System.Windows.Forms.SplitContainer mainSplitter;
+        private System.Windows.Forms.FlowLayoutPanel panouGeneral;
+        private System.Windows.Forms.SplitContainer splitterSecundar;
+        private System.Windows.Forms.FlowLayoutPanel projectList;
+        private System.Windows.Forms.SplitContainer splitterFTC;
+        private System.Windows.Forms.FlowLayoutPanel panouFTC;
         private System.Windows.Forms.Button run;
-        private FastColoredTextBoxNS.FastColoredTextBox TextBox;
+        private FastColoredTextBoxNS.FastColoredTextBox FTC;
+        private System.Windows.Forms.Button add;
     }
 }
 
