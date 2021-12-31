@@ -32,13 +32,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.mainSplitter = new System.Windows.Forms.SplitContainer();
             this.panouGeneral = new System.Windows.Forms.FlowLayoutPanel();
+            this.add = new System.Windows.Forms.Button();
             this.splitterSecundar = new System.Windows.Forms.SplitContainer();
-            this.splitterFTC = new System.Windows.Forms.SplitContainer();
             this.projectList = new System.Windows.Forms.FlowLayoutPanel();
-            this.FTC = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.splitterFTC = new System.Windows.Forms.SplitContainer();
             this.panouFTC = new System.Windows.Forms.FlowLayoutPanel();
             this.run = new System.Windows.Forms.Button();
-            this.add = new System.Windows.Forms.Button();
+            this.FTC = new FastColoredTextBoxNS.FastColoredTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitter)).BeginInit();
             this.mainSplitter.Panel1.SuspendLayout();
             this.mainSplitter.Panel2.SuspendLayout();
@@ -52,10 +52,9 @@
             this.splitterFTC.Panel1.SuspendLayout();
             this.splitterFTC.Panel2.SuspendLayout();
             this.splitterFTC.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FTC)).BeginInit();
             this.panouFTC.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FTC)).BeginInit();
             this.SuspendLayout();
-            this.Resize += new System.EventHandler(this.ResizeForm);
             // 
             // mainSplitter
             // 
@@ -85,6 +84,16 @@
             this.panouGeneral.Size = new System.Drawing.Size(798, 23);
             this.panouGeneral.TabIndex = 1;
             // 
+            // add
+            // 
+            this.add.Location = new System.Drawing.Point(3, 3);
+            this.add.Name = "add";
+            this.add.Size = new System.Drawing.Size(50, 25);
+            this.add.TabIndex = 0;
+            this.add.Text = "Add";
+            this.add.UseVisualStyleBackColor = true;
+            this.add.Click += new System.EventHandler(this.add_Click);
+            // 
             // splitterSecundar
             // 
             this.splitterSecundar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -102,6 +111,14 @@
             this.splitterSecundar.Size = new System.Drawing.Size(800, 421);
             this.splitterSecundar.SplitterDistance = 100;
             this.splitterSecundar.TabIndex = 2;
+            // 
+            // projectList
+            // 
+            this.projectList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.projectList.Location = new System.Drawing.Point(0, 0);
+            this.projectList.Name = "projectList";
+            this.projectList.Size = new System.Drawing.Size(98, 419);
+            this.projectList.TabIndex = 3;
             // 
             // splitterFTC
             // 
@@ -122,47 +139,6 @@
             this.splitterFTC.SplitterDistance = 26;
             this.splitterFTC.TabIndex = 1;
             // 
-            // projectList
-            // 
-            this.projectList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.projectList.Location = new System.Drawing.Point(0, 0);
-            this.projectList.Name = "projectList";
-            this.projectList.Size = new System.Drawing.Size(98, 419);
-            this.projectList.TabIndex = 3;
-            // 
-            // FTC
-            // 
-            this.FTC.AutoCompleteBracketsList = new char[] {
-        '(',
-        ')',
-        '{',
-        '}',
-        '[',
-        ']',
-        '\"',
-        '\"',
-        '\'',
-        '\''};
-            this.FTC.AutoScrollMinSize = new System.Drawing.Size(221, 18);
-            this.FTC.BackBrush = null;
-            this.FTC.CharHeight = 18;
-            this.FTC.CharWidth = 10;
-            this.FTC.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.FTC.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.FTC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FTC.ForeColor = System.Drawing.Color.Coral;
-            this.FTC.IsReplaceMode = false;
-            this.FTC.Location = new System.Drawing.Point(0, 0);
-            this.FTC.Margin = new System.Windows.Forms.Padding(5);
-            this.FTC.Name = "FTC";
-            this.FTC.Paddings = new System.Windows.Forms.Padding(0);
-            this.FTC.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.FTC.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("FTC.ServiceColors")));
-            this.FTC.Size = new System.Drawing.Size(694, 389);
-            this.FTC.TabIndex = 2;
-            this.FTC.Text = "fastColoredTextBox1";
-            this.FTC.Zoom = 100;
-            // 
             // panouFTC
             // 
             this.panouFTC.Controls.Add(this.run);
@@ -181,16 +157,43 @@
             this.run.TabIndex = 0;
             this.run.Text = "Run";
             this.run.UseVisualStyleBackColor = true;
+            this.run.Click += new System.EventHandler(this.run_Click);
             // 
-            // add
+            // FTC
             // 
-            this.add.Location = new System.Drawing.Point(3, 3);
-            this.add.Name = "add";
-            this.add.Size = new System.Drawing.Size(50, 25);
-            this.add.TabIndex = 0;
-            this.add.Text = "Add";
-            this.add.UseVisualStyleBackColor = true;
-            this.add.Click += new System.EventHandler(this.add_Click);
+            this.FTC.AutoCompleteBrackets = true;
+            this.FTC.AutoCompleteBracketsList = new char[] {
+        '(',
+        ')',
+        '{',
+        '}',
+        '[',
+        ']',
+        '\"',
+        '\"',
+        '\'',
+        '\''};
+            this.FTC.AutoScrollMinSize = new System.Drawing.Size(221, 18);
+            this.FTC.BackBrush = null;
+            this.FTC.CharHeight = 18;
+            this.FTC.CharWidth = 10;
+            this.FTC.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.FTC.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.FTC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FTC.Font = new System.Drawing.Font("Courier New", 9.75F);
+            this.FTC.ForeColor = System.Drawing.Color.Coral;
+            this.FTC.IsReplaceMode = false;
+            this.FTC.Location = new System.Drawing.Point(0, 0);
+            this.FTC.Margin = new System.Windows.Forms.Padding(5);
+            this.FTC.Name = "FTC";
+            this.FTC.Paddings = new System.Windows.Forms.Padding(0);
+            this.FTC.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.FTC.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("FTC.ServiceColors")));
+            this.FTC.Size = new System.Drawing.Size(694, 389);
+            this.FTC.TabIndex = 2;
+            this.FTC.Text = "fastColoredTextBox1";
+            this.FTC.Zoom = 100;
+            this.FTC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FTC_KeyDown);
             // 
             // Form1
             // 
@@ -201,6 +204,7 @@
             this.Name = "Form1";
             this.Text = "IDERV";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Resize += new System.EventHandler(this.ResizeForm);
             this.mainSplitter.Panel1.ResumeLayout(false);
             this.mainSplitter.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitter)).EndInit();
@@ -214,8 +218,8 @@
             this.splitterFTC.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitterFTC)).EndInit();
             this.splitterFTC.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.FTC)).EndInit();
             this.panouFTC.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.FTC)).EndInit();
             this.ResumeLayout(false);
 
         }
