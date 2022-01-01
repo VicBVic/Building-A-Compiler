@@ -98,6 +98,7 @@ namespace IDE
 
         private void runBoy()
         {
+            save();
             removemark();
             File.WriteAllText(@"Compiler\main.tmp", FTC.Text);
             Process p=Process.Start(@"Compiler\Compiler.exe");
