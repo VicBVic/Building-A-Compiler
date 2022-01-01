@@ -13,6 +13,13 @@ void Expression::push_back(Expression* newMember, Operand operation)
     memberCount++;
 }
 
+Expression* Expression::make_copy()
+{
+    Expression* exp = new Expression;
+    *exp = *this;
+    return exp;
+}
+
 Expression::Expression()
 {
     memberCount = 0;

@@ -10,6 +10,13 @@ Variable* Return::get_value()
     return return_expr->evaluate();
 }
 
+Argument* Return::make_copy()
+{
+    Return* arg = new Return;
+    *arg = *this;
+    return arg;
+}
+
 void Return::set_value(Expression* new_expr)
 {
     return_expr = new_expr;

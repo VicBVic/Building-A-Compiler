@@ -21,6 +21,13 @@ Variable::Variable()
 	value = 0;
 }
 
+Variable* Variable::make_copy()
+{
+	Variable* var = new Variable;
+	*var = *this;
+	return var;
+}
+
 
 void Variable::operate(const Variable other, const Operand operation)
 {

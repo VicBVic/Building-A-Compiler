@@ -25,18 +25,15 @@ Variable* Program::evaluate()
 	std::map< Expression*, Expression*> new_expres;
 	for (auto e : vars)
 	{
-		new_vars[e] = new Variable;
-		*new_vars[e] = *e;
+		new_vars[e] = e->make_copy();
 	}
 	for (auto e : expres)
 	{
-		new_expres[e] = new Expression;
-		*new_expres[e] = *e;
+		new_expres[e] = e->make_copy();
 	}
 	for (auto e : args)
 	{
-		new_args[e] = new Argument;
-		*new_args[e] = *e;
+		new_args[e] = e->make_copy();
 	}
 	for (auto e : new_expres)
 	{

@@ -1,5 +1,9 @@
 #include "Conditional.h"
 
+Conditional::Conditional()
+{
+}
+
 Conditional::Conditional(Argument* next, Argument* other, Expression* compare)
 {
 	set_next(next);
@@ -15,6 +19,13 @@ Argument* Conditional::get_other()
 void Conditional::set_other(Argument* other)
 {
 	this->other = other;
+}
+
+Argument* Conditional::make_copy()
+{
+	Conditional* arg = new Conditional;
+	*arg = *this;
+	return arg;
 }
 
 Argument* Conditional::execute()

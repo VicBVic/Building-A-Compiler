@@ -24,6 +24,13 @@ Variable* Argument::get_value()
 	return ret_val;
 }
 
+Argument* Argument::make_copy()
+{
+	Argument* arg = new Argument;
+	*arg = *this;
+	return arg;
+}
+
 void Argument::refactor(std::map<Argument*, Argument*>* args, std::map<Variable*, Variable*>* vars, std::map<Expression*, Expression*>* expres)
 {
 	Argument* next = get_next();
