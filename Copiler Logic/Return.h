@@ -1,17 +1,17 @@
 #pragma once
 #include "Argument.h"
+#include "Variable.h"
 #include "Expression.h"
-class Conditional :
+class Return :
     public Argument
 {
-private:
-    Argument* other;
-    Expression* compare;
 public:
-    Conditional(Argument* next, Argument* other, Expression* compare);
-    Argument* get_other();
-    void set_other(Argument* other);
     Argument* execute();
+    virtual Variable* get_value();
+    void set_value(Expression* new_expr);
     void refactor(std::map<Argument*, Argument*>* args, std::map<Variable*, Variable*>* vars, std::map<Expression*, Expression*>* expres);
+
+private:
+    Expression* return_expr;
 };
 

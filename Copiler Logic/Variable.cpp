@@ -1,6 +1,16 @@
 #include "Variable.h"
 #include "Operand.h"
 
+int Variable::get_value()
+{
+	return value;
+}
+
+void Variable::set_value(int value)
+{
+	this->value = value;
+}
+
 Variable::Variable(int value)
 {
 	this->value = value;

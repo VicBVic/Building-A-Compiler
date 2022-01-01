@@ -1,27 +1,25 @@
 #include "Expression.h"
 #include "Variable.h"
 
-Expression::Expression(const Variable defaultVal)
+Expression::Expression(Variable* defaultVal)
 {
-    members[0] = nullptr;
     memberCount = 0;
     this->defaultVal = defaultVal;
 }
 void Expression::push_back(Expression* newMember, Operand operation)
 {
-    members[memberCount] = newMember;
-    operations[memberCount] = operation;
+    members.push_back(newMember);
+    operations.push_back(operation);
     memberCount++;
 }
 
 Expression::Expression()
 {
-    members[0] = nullptr;
     memberCount = 0;
-    this->defaultVal = -99; //trebuie inlocuit
+    this->defaultVal = nullptr;
 }
 
-Variable Expression::evaluate()
+Variable* Expression::evaluate()
 {
     if (memberCount == 0)
     {
@@ -29,10 +27,10 @@ Variable Expression::evaluate()
     }
     else
     {
-        Variable ans=members[0]->evaluate();
+        ans.set_value(members[0]->evaluate()->get_value());
         for (int i = 1; i < memberCount; i++)
         {
-            Variable memberValue = members[i]->evaluate();
+            Variable memberValue = *(members[i]->evaluate());
 
             if (ans.can_operate(memberValue, operations[i]))
             {
@@ -43,6 +41,21 @@ Variable Expression::evaluate()
                 return defaultVal;
             }
         }
-        return ans;
+        return (&ans);
+    }
+}
+
+void Expression::refactor(std::map<Variable*,Variable*>* vars,std::map<Expression*, Expression*>* expres)
+{
+    for (auto e : members)
+    {
+        if (expres->find(e) != expres->end())
+        {
+            e = expres->find(e)->second;
+        }
+    }
+    if (vars->find(defaultVal) != vars->end())
+    {
+        defaultVal = vars->find(defaultVal)->second;
     }
 }

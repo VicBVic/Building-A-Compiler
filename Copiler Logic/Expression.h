@@ -1,20 +1,22 @@
 #pragma once
 #include "Variable.h"
 #include "Operand.h"
-
-constexpr auto maxSize = 1000;
+#include <map>
+#include <vector>
 
 class Expression
 {
 private:
-	Expression* members[maxSize];
-	Operand operations[maxSize];
-	Variable defaultVal;
+	std::vector<Expression*> members;
+	std::vector<Operand> operations;
+	Variable* defaultVal;
+	Variable ans;
 	int memberCount;
 public:
-	Expression(Variable defaultVal);
+	Expression(Variable* defaultVal);
 	Expression();
 	void push_back(Expression* newMember, Operand operation);
-	Variable evaluate();
+	Variable* evaluate();
+	void refactor(std::map<Variable*, Variable*>* vars,std::map<Expression*, Expression*>* expres);
 };
 
