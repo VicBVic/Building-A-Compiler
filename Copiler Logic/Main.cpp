@@ -1,8 +1,11 @@
 #include <iostream>
+#include <fstream>
 #include "Expression.h"
 #include "Operand.h"
 #include "Program.h"
 #include "Return.h"
+
+std::ifstream in("main.tmp");
 int main()
 {	
 	Variable* returnVal = new Variable(5318008);
