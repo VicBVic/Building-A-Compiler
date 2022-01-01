@@ -27,13 +27,16 @@
     <ClInclude Include="Operand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Trie.h">
+    <ClInclude Include="Conditional.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DataType.h">
+    <ClInclude Include="Program.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Function.h">
+    <ClInclude Include="Return.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="String.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -53,17 +56,17 @@
     <ClCompile Include="Operand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Trie.cpp">
+    <ClCompile Include="Conditional.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DataType.cpp">
+    <ClCompile Include="Program.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Function.cpp">
+    <ClCompile Include="Return.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <ClCompile Include="String.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
