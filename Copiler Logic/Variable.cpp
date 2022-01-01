@@ -1,6 +1,16 @@
 #include "Variable.h"
 #include "Operand.h"
 
+int Variable::get_value()
+{
+	return value;
+}
+
+void Variable::set_value(int value)
+{
+	this->value = value;
+}
+
 Variable::Variable(int value)
 {
 	this->value = value;
@@ -9,6 +19,13 @@ Variable::Variable(int value)
 Variable::Variable()
 {
 	value = 0;
+}
+
+Variable* Variable::make_copy()
+{
+	Variable* var = new Variable;
+	*var = *this;
+	return var;
 }
 
 
