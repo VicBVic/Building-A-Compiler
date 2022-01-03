@@ -10,7 +10,7 @@ private:
 	std::vector<Expression*> members;
 	std::vector<Operand> operations;
 	Variable* defaultVal;
-	Variable ans;
+	Variable* ans;
 	int memberCount;
 public:
 	Expression(Variable* defaultVal);

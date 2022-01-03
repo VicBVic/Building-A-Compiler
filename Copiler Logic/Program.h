@@ -13,7 +13,7 @@ public:
 	void add_variable(Variable* var);
 	Variable* evaluate();
 private:
-	Variable ans;
+	Variable *ans;
 	std::vector<Variable*> params;
 	std::vector<Variable*> vars;
 	std::vector<Expression*> expres;

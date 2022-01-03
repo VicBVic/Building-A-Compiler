@@ -4,11 +4,12 @@
 #include "Operand.h"
 #include "Program.h"
 #include "Return.h"
+#include "String.h"
 
 std::ifstream in("main.tmp");
 int main()
 {	
-	Variable* returnVal = new Variable(5318008);
+	Variable* returnVal = new String("bruhfuck");
 	Expression* returnExp = new Expression(returnVal);
 	Argument* a = new Argument;
 	Argument* b = new Argument;
@@ -19,9 +20,14 @@ int main()
 	c->set_next(d);
 	d->set_value(returnExp);
 	Program* main = new Program;
+	main->add_argument(a);
+	main->add_argument(b);
+	main->add_argument(c);
 	main->add_argument(d);
 	main->add_expression(returnExp);
 	main->add_variable(returnVal);
-	std::cout << main->evaluate()->get_value();
+	std::string ans;
+	main->evaluate()->get_value(ans);
+	std::cout << ans;
 	return 0;
 }

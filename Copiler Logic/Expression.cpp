@@ -4,6 +4,7 @@
 Expression::Expression(Variable* defaultVal)
 {
     memberCount = 0;
+    ans = new Variable;
     this->defaultVal = defaultVal;
 }
 void Expression::push_back(Expression* newMember, Operand operation)
@@ -23,6 +24,7 @@ Expression* Expression::make_copy()
 Expression::Expression()
 {
     memberCount = 0;
+    ans = new Variable;
     this->defaultVal = nullptr;
 }
 
@@ -34,21 +36,21 @@ Variable* Expression::evaluate()
     }
     else
     {
-        ans.set_value(members[0]->evaluate()->get_value());
+        ans= members[0]->evaluate()->make_copy(); //ceva nu e bine aici, daca nu merge expresia asta e primul penct de vulnerabilitate
         for (int i = 1; i < memberCount; i++)
         {
             Variable memberValue = *(members[i]->evaluate());
 
-            if (ans.can_operate(memberValue, operations[i]))
+            if (ans->can_operate(memberValue, operations[i]))
             {
-                ans.operate(memberValue, operations[i]);
+                ans->operate(memberValue, operations[i]);
             }
             else
             {
                 return defaultVal;
             }
         }
-        return (&ans);
+        return ans;
     }
 }
 

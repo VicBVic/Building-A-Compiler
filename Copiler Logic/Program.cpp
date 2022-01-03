@@ -2,6 +2,7 @@
 #include <map>
 Program::Program()
 {
+	ans = new Variable;
 }
 void Program::add_argument(Argument* arg)
 {
@@ -55,7 +56,7 @@ Variable* Program::evaluate()
 		next = curent->execute();
 	}
 
-	ans = *(curent->get_value());
+	ans = curent->get_value()->make_copy();
 
 	//rebound
 	for (auto e : vars)
@@ -71,5 +72,5 @@ Variable* Program::evaluate()
 		delete new_args[e];
 	}
 
-	return (&ans);
+	return ans;
 }

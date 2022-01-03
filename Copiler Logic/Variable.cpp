@@ -1,24 +1,35 @@
 #include "Variable.h"
 #include "Operand.h"
 
-int Variable::get_value()
-{
-	return value;
-}
-
 void Variable::set_value(int value)
 {
-	this->value = value;
 }
 
-Variable::Variable(int value)
+void Variable::set_value(std::string new_value)
 {
-	this->value = value;
+}
+
+void Variable::set_value(float new_value)
+{
+}
+
+void Variable::get_value(int& ret)
+{
+	ret = 0;
+}
+
+void Variable::get_value(std::string& ret)
+{
+	ret = "you failed here bitch";
+}
+
+void Variable::get_value(float& ret)
+{
+	ret = 0.0;
 }
 
 Variable::Variable()
 {
-	value = 0;
 }
 
 Variable* Variable::make_copy()
@@ -32,25 +43,14 @@ Variable* Variable::make_copy()
 void Variable::operate(const Variable other, const Operand operation)
 {
 	//the heart of operation magic
-	switch (operation.type)
-	{
-	case Operand::ADD:
-		this->value += other.value;
-		break;
-	case Operand::SUBSTRACT:
-		this->value -= other.value;
-		break;
-	case Operand::MULTIPLY:
-		this->value *= other.value;
-		break;
-	case Operand::DIVIDE:
-		this->value /= other.value;
-		break;
-
-	}
 }
 
 bool Variable::can_operate(const Variable other, const Operand operation)
 {
-	return (operation.type!=Operand::DIVIDE||other.value!=0);
+	return 0; //decide if you can actually do stuff
+}
+
+bool Variable::is_null()
+{
+	return 1; 
 }

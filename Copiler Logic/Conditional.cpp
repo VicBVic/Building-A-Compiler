@@ -30,7 +30,8 @@ Argument* Conditional::make_copy()
 
 Argument* Conditional::execute()
 {
-	if (compare->evaluate()->get_value())
+
+	if (!compare->evaluate()->is_null())
 	{
 		return get_next();
 	}

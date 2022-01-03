@@ -8,7 +8,7 @@ class Argument
 {
 private:
 	Argument* next;
-	Variable* ret_val = new Variable(-999);
+	Variable* ret_val = new Variable();
 public:
 	Argument(Argument* next);
 	Argument();
