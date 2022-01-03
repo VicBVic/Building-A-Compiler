@@ -13,6 +13,10 @@ void Variable::set_value(float new_value)
 {
 }
 
+void Variable::copy_value(Variable* new_value)
+{
+}
+
 void Variable::get_value(int& ret)
 {
 	ret = 0;

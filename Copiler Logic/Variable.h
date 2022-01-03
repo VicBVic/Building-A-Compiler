@@ -11,6 +11,7 @@ public:
 	virtual void set_value(int new_value);
 	virtual void set_value(std::string new_value);
 	virtual void set_value(float new_value);
+	virtual void copy_value(Variable* new_value);
 	Variable();
 	virtual Variable* make_copy();
 	virtual void operate(const Variable other,const Operand operation);

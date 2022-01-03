@@ -19,7 +19,7 @@ int main()
 	b->set_next(c);
 	c->set_next(d);
 	d->set_value(returnExp);
-	Program* main = new Program;
+	Program<String>* main = new Program<String>;
 	main->add_argument(a);
 	main->add_argument(b);
 	main->add_argument(c);

@@ -30,6 +30,11 @@ void String::set_value(float new_value)
 	value = std::to_string(new_value);
 }
 
+void String::copy_value(Variable* new_value)
+{
+	new_value->get_value(this->value);
+}
+
 Variable* String::make_copy()
 {
 	String* var = new String;

@@ -1,25 +1,25 @@
-#include "Program.h"
+/*#include "Program.h"
 #include <map>
-Program::Program()
+template <typename T> Program<T>::Program()
 {
 	ans = new Variable;
 }
-void Program::add_argument(Argument* arg)
+template <typename T> void Program<T>::add_argument(Argument* arg)
 {
 	args.push_back(arg);
 }
 
-void Program::add_expression(Expression* exp)
+template <typename T>void Program<T>::add_expression(Expression* exp)
 {
 	expres.push_back(exp);
 }
 
-void Program::add_variable(Variable* var)
+template <typename T> void Program<T>::add_variable(Variable* var)
 {
 	vars.push_back(var);
 }
 
-Variable* Program::evaluate()
+template <typename T> Variable* Program<T>::evaluate()
 {
 	std::map<Argument*, Argument*> new_args;
 	std::map< Variable*, Variable*> new_vars;
@@ -56,7 +56,7 @@ Variable* Program::evaluate()
 		next = curent->execute();
 	}
 
-	ans = curent->get_value()->make_copy();
+	ans->copy_value(curent->get_value());
 
 	//rebound
 	for (auto e : vars)
@@ -74,3 +74,4 @@ Variable* Program::evaluate()
 
 	return ans;
 }
+*/

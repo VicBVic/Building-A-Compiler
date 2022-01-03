@@ -36,7 +36,7 @@ Variable* Expression::evaluate()
     }
     else
     {
-        ans= members[0]->evaluate()->make_copy(); //ceva nu e bine aici, daca nu merge expresia asta e primul penct de vulnerabilitate
+        ans->copy_value(members[0]->evaluate()); //ceva nu e bine aici, daca nu merge expresia asta e primul penct de vulnerabilitate
         for (int i = 1; i < memberCount; i++)
         {
             Variable memberValue = *(members[i]->evaluate());
