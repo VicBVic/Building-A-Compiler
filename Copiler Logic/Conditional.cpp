@@ -2,6 +2,7 @@
 
 Conditional::Conditional()
 {
+	this->compare = nullptr;
 }
 
 Conditional::Conditional(Argument* next, Argument* other, Expression* compare)
@@ -30,12 +31,17 @@ Argument* Conditional::make_copy()
 
 Argument* Conditional::execute()
 {
-
-	if (!compare->evaluate()->is_null())
+	Variable* cmp = compare->evaluate();
+	if (!cmp->is_null())
 	{
+		delete cmp;
 		return get_next();
 	}
-	else return get_other();
+	else
+	{
+		delete cmp;
+		return get_other(); 
+	}
 }
 void Conditional::refactor(std::map<Argument*, Argument*>* args, std::map<Variable*, Variable*>* vars, std::map<Expression*, Expression*>* expres)
 {

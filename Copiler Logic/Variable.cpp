@@ -44,12 +44,12 @@ Variable* Variable::make_copy()
 }
 
 
-void Variable::operate(const Variable other, const Operand operation)
+void Variable::operate(Variable* other, const Operand operation)
 {
 	//the heart of operation magic
 }
 
-bool Variable::can_operate(const Variable other, const Operand operation)
+bool Variable::can_operate(Variable* other, const Operand operation)
 {
 	return 0; //decide if you can actually do stuff
 }

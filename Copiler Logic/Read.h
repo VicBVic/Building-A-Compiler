@@ -1,22 +1,18 @@
 #pragma once
-#include "Variable.h"
-#include "Expression.h"
-#include <map>
-
-
-class Argument
+#include "Argument.h"
+class Read :
+    public Argument
 {
-private:
-	Argument* next;
-	Variable* ret_val = new Variable();
 public:
-	Argument(Argument* next);
-	Argument();
-	Argument* get_next();
+	Read();
+	Read(Variable* target);
+	void set_target(Variable* target);
+	Variable* get_target();
 	virtual Argument* execute();
 	virtual Variable* get_value();
 	virtual Argument* make_copy();
 	virtual void refactor(std::map<Argument*, Argument*>* args, std::map<Variable*, Variable*>* vars, std::map<Expression*, Expression*>* expres);
-	void set_next(Argument* next);
+private:
+    Variable* target;
 };
 

@@ -52,11 +52,11 @@ String::String()
 	value = "";
 }
 
-void String::operate(const Variable other, const Operand operation)
+void String::operate(Variable* other, const Operand operation)
 {
 }
 
-bool String::can_operate(const Variable other, const Operand operation)
+bool String::can_operate(Variable* other, const Operand operation)
 {
 	return false;
 }

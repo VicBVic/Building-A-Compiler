@@ -14,8 +14,8 @@ public:
 	virtual Variable* make_copy();
 	String(std::string value);
 	String();
-	virtual void operate(const Variable other, const Operand operation);
-	virtual bool can_operate(const Variable other, const Operand operation);
+	virtual void operate(Variable* other, const Operand operation);
+	virtual bool can_operate(Variable* other, const Operand operation);
 	virtual bool is_null();
 	//friend std::ostream& operator<< (std::ostream& os, const String& c);
 private:

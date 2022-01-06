@@ -23,7 +23,7 @@ public:
 	{
 		vars.push_back(var);
 	}
-	Variable* evaluate()
+	virtual Variable* evaluate()
 	{
 		std::map<Argument*, Argument*> new_args;
 		std::map< Variable*, Variable*> new_vars;
@@ -40,6 +40,7 @@ public:
 		{
 			new_args[e] = e->make_copy();
 		}
+
 		for (auto e : new_expres)
 		{
 			e.second->refactor(&new_vars, &new_expres);

@@ -5,29 +5,38 @@
 #include "Program.h"
 #include "Return.h"
 #include "String.h"
+#include "Int.h"
+#include "Float.h"
+#include "Read.h"
+#include "Write.h"
 
 std::ifstream in("main.tmp");
 int main()
 {	
-	Variable* returnVal = new String("bruhfuck");
-	Expression* returnExp = new Expression(returnVal);
-	Argument* a = new Argument;
-	Argument* b = new Argument;
-	Argument* c = new Argument;
-	Return* d = new Return;
-	a->set_next(b);
-	b->set_next(c);
-	c->set_next(d);
-	d->set_value(returnExp);
-	Program<String>* main = new Program<String>;
-	main->add_argument(a);
-	main->add_argument(b);
-	main->add_argument(c);
-	main->add_argument(d);
-	main->add_expression(returnExp);
-	main->add_variable(returnVal);
-	std::string ans;
-	main->evaluate()->get_value(ans);
-	std::cout << ans;
+	Int* a = new Int(5);
+	Int* b = new Int(5);
+	Expression* exp = new Expression(a);
+	Expression* mult = new Expression(b);
+	Expression* encap = new Expression();
+	encap->push_back(exp, Operand(Operand::UNDEFINED));
+	encap->push_back(mult, Operand(Operand::MULTIPLY));
+	Read* r = new Read(a);
+	Write* w = new Write(encap);
+	Return* ret = new Return;
+	ret->set_value(new Expression(new Int(0)));
+	r->set_next(w);
+	w->set_next(ret);
+	Program<Int>* p = new Program<Int>;
+	p->add_argument(r);
+	p->add_argument(w);
+	p->add_argument(ret);
+	p->add_variable(a);
+	p->add_variable(b);
+	
+	p->add_expression(encap);
+	p->add_expression(mult);
+	p->add_expression(exp);
+	p->evaluate();
+
 	return 0;
 }
