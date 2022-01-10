@@ -4,7 +4,6 @@
 Expression::Expression(Variable* defaultVal)
 {
     memberCount = 0;
-    ans = new Variable;
     this->defaultVal = defaultVal;
 }
 void Expression::push_back(Expression* newMember, Operand operation)
@@ -24,7 +23,6 @@ Expression* Expression::make_copy()
 Expression::Expression()
 {
     memberCount = 0;
-    ans = new Variable;
     this->defaultVal = nullptr;
 }
 
@@ -32,22 +30,24 @@ Variable* Expression::evaluate()
 {
     if (memberCount == 0)
     {
-        return defaultVal;
+        return defaultVal->make_copy();
     }
     else
     {
-        ans= members[0]->evaluate()->make_copy(); //ceva nu e bine aici, daca nu merge expresia asta e primul penct de vulnerabilitate
+        Variable* ans = members[0]->evaluate();
         for (int i = 1; i < memberCount; i++)
         {
-            Variable memberValue = *(members[i]->evaluate());
+            Variable* memberValue=members[i]->evaluate();
 
             if (ans->can_operate(memberValue, operations[i]))
             {
                 ans->operate(memberValue, operations[i]);
+                delete memberValue;
             }
             else
             {
-                return defaultVal;
+                delete memberValue;
+                return defaultVal->make_copy();
             }
         }
         return ans;
@@ -56,11 +56,11 @@ Variable* Expression::evaluate()
 
 void Expression::refactor(std::map<Variable*,Variable*>* vars,std::map<Expression*, Expression*>* expres)
 {
-    for (auto e : members)
+    for (int i=0;i<members.size();i++)
     {
-        if (expres->find(e) != expres->end())
+        if (expres->find(members[i]) != expres->end())
         {
-            e = expres->find(e)->second;
+            members[i] = expres->find(members[i])->second;
         }
     }
     if (vars->find(defaultVal) != vars->end())

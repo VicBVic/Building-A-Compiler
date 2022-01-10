@@ -30,6 +30,11 @@ void String::set_value(float new_value)
 	value = std::to_string(new_value);
 }
 
+void String::copy_value(Variable* new_value)
+{
+	new_value->get_value(this->value);
+}
+
 Variable* String::make_copy()
 {
 	String* var = new String;
@@ -47,11 +52,11 @@ String::String()
 	value = "";
 }
 
-void String::operate(const Variable other, const Operand operation)
+void String::operate(Variable* other, const Operand operation)
 {
 }
 
-bool String::can_operate(const Variable other, const Operand operation)
+bool String::can_operate(Variable* other, const Operand operation)
 {
 	return false;
 }

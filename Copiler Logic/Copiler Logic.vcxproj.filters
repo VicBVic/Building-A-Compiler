@@ -13,60 +13,105 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Arguments">
+      <UniqueIdentifier>{805e3f14-8da2-46f7-88f8-ab24c0db8506}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Arguments">
+      <UniqueIdentifier>{00a88577-ebef-4012-a26e-8d97c79c1912}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Variables">
+      <UniqueIdentifier>{312f4228-7274-4bbe-8206-39563ab9ab09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Variables">
+      <UniqueIdentifier>{a0c954df-251a-43ff-957c-b91759f94945}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Argument.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Expression.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Variable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Operand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Conditional.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Program.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Argument.h">
+      <Filter>Header Files\Arguments</Filter>
+    </ClInclude>
+    <ClInclude Include="Conditional.h">
+      <Filter>Header Files\Arguments</Filter>
+    </ClInclude>
     <ClInclude Include="Return.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Arguments</Filter>
+    </ClInclude>
+    <ClInclude Include="Float.h">
+      <Filter>Header Files\Variables</Filter>
+    </ClInclude>
+    <ClInclude Include="Int.h">
+      <Filter>Header Files\Variables</Filter>
     </ClInclude>
     <ClInclude Include="String.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Variables</Filter>
+    </ClInclude>
+    <ClInclude Include="Variable.h">
+      <Filter>Header Files\Variables</Filter>
+    </ClInclude>
+    <ClInclude Include="SetVar.h">
+      <Filter>Header Files\Arguments</Filter>
+    </ClInclude>
+    <ClInclude Include="Read.h">
+      <Filter>Header Files\Arguments</Filter>
+    </ClInclude>
+    <ClInclude Include="Write.h">
+      <Filter>Header Files\Arguments</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Argument.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Expression.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Variable.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Operand.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Conditional.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Program.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Argument.cpp">
+      <Filter>Source Files\Arguments</Filter>
+    </ClCompile>
+    <ClCompile Include="Conditional.cpp">
+      <Filter>Source Files\Arguments</Filter>
+    </ClCompile>
     <ClCompile Include="Return.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Arguments</Filter>
+    </ClCompile>
+    <ClCompile Include="Float.cpp">
+      <Filter>Source Files\Variables</Filter>
+    </ClCompile>
+    <ClCompile Include="Int.cpp">
+      <Filter>Source Files\Variables</Filter>
     </ClCompile>
     <ClCompile Include="String.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Variables</Filter>
     </ClCompile>
+    <ClCompile Include="Variable.cpp">
+      <Filter>Source Files\Variables</Filter>
+    </ClCompile>
+    <ClCompile Include="Operand.cpp">
+      <Filter>Source Files\Variables</Filter>
+    </ClCompile>
+    <ClCompile Include="SetVar.cpp">
+      <Filter>Source Files\Arguments</Filter>
+    </ClCompile>
+    <ClCompile Include="Read.cpp">
+      <Filter>Source Files\Arguments</Filter>
+    </ClCompile>
+    <ClCompile Include="Write.cpp">
+      <Filter>Source Files\Arguments</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

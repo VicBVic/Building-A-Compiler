@@ -10,14 +10,13 @@ private:
 	std::vector<Expression*> members;
 	std::vector<Operand> operations;
 	Variable* defaultVal;
-	Variable* ans;
 	int memberCount;
 public:
 	Expression(Variable* defaultVal);
 	Expression();
 	void push_back(Expression* newMember, Operand operation);
 	virtual Expression* make_copy();
-	Variable* evaluate();
+	virtual Variable* evaluate();
 	void refactor(std::map<Variable*, Variable*>* vars,std::map<Expression*, Expression*>* expres);
 };
 
