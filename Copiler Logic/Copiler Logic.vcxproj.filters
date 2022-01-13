@@ -66,6 +66,9 @@
     <ClInclude Include="Write.h">
       <Filter>Header Files\Arguments</Filter>
     </ClInclude>
+    <ClInclude Include="Parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -109,6 +112,9 @@
     </ClCompile>
     <ClCompile Include="Write.cpp">
       <Filter>Source Files\Arguments</Filter>
+    </ClCompile>
+    <ClCompile Include="Parser.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

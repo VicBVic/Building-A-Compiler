@@ -1,5 +1,6 @@
 #include <iostream>
-#include <fstream>
+#include <vector>
+#include <string>
 #include "Expression.h"
 #include "Operand.h"
 #include "Program.h"
@@ -9,10 +10,11 @@
 #include "Float.h"
 #include "Read.h"
 #include "Write.h"
+#include "Parser.h"
 
-std::ifstream in("main.tmp");
 int main()
-{	
+{
+	/*
 	Int* a = new Int(5);
 	Int* b = new Int(5);
 	Expression* exp = new Expression(a);
@@ -32,11 +34,22 @@ int main()
 	p->add_argument(ret);
 	p->add_variable(a);
 	p->add_variable(b);
-	
+
 	p->add_expression(encap);
 	p->add_expression(mult);
 	p->add_expression(exp);
 	p->evaluate();
+	*/
 
+	std::vector<std::vector<std::string>> liness = Parser().gettokens();
+
+	for (int i = 0; i < liness.size(); i++) {
+		std::cout << i << ' ';
+		for (auto c : liness[i])std::cout << c << ' ';
+		std::cout << '\n';
+	}
+
+	std::cout << '\n';
+	system("pause");
 	return 0;
 }

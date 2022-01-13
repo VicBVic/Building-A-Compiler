@@ -70,6 +70,7 @@ namespace IDE
         {
             FTC.BookmarkColor= Color.Red;
             if (!Directory.Exists("Projects")) Directory.CreateDirectory("Projects");
+            if (!Directory.Exists("Compiler")) Directory.CreateDirectory("Compiler");
             loadProjects();
             FTC.Hide();
         }
