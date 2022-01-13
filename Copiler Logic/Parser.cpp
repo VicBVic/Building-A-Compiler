@@ -4,12 +4,11 @@
 
 std::ifstream in("main.tmp");
 
-std::vector<std::vector<std::string>> Parser::gettokens() {
+std::vector<std::string> Parser::gettokens() {
 	std::string line;
-	std::vector<std::vector<std::string>> lines;
+	std::vector<std::string> tokens;
 	while (getline(in, line))
 	{
-		std::vector<std::string> tokens;
 		std::string token;
 		bool s = 0;
 		for (auto c : line) {
@@ -29,6 +28,7 @@ std::vector<std::vector<std::string>> Parser::gettokens() {
 			case '/':
 			case '*':
 			case '%':
+			case ',':
 				tokens.push_back(token);
 				tokens.push_back(std::string(1, c));
 				token = "";
@@ -38,8 +38,7 @@ std::vector<std::vector<std::string>> Parser::gettokens() {
 				break;
 			}
 		}
-		lines.push_back(tokens);
 	}
-	return lines;
+	return tokens;
 }
 

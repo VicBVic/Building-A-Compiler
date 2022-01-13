@@ -41,13 +41,9 @@ int main()
 	p->evaluate();
 	*/
 
-	std::vector<std::vector<std::string>> liness = Parser().gettokens();
+	std::vector<std::string> tokens = Parser().gettokens();
 
-	for (int i = 0; i < liness.size(); i++) {
-		std::cout << i << ' ';
-		for (auto c : liness[i])std::cout << c << ' ';
-		std::cout << '\n';
-	}
+
 
 	std::cout << '\n';
 	system("pause");

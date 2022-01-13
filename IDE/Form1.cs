@@ -71,6 +71,7 @@ namespace IDE
             FTC.BookmarkColor= Color.Red;
             if (!Directory.Exists("Projects")) Directory.CreateDirectory("Projects");
             if (!Directory.Exists("Compiler")) Directory.CreateDirectory("Compiler");
+            if(File.Exists(@"Compiler\main.tmp"))File.Create(@"Compiler\main.tmp").Close();
             loadProjects();
             FTC.Hide();
         }
@@ -79,8 +80,7 @@ namespace IDE
         {
             String n = (sender as creareProiect).name;
             Directory.CreateDirectory(@"Projects\" + n);
-            FileStream tmp=File.Create(@"Projects\" + n + @"\main.rv");
-            tmp.Close();
+            File.Create(@"Projects\" + n + @"\main.rv").Close();
             loadProjects();
             openProject(n);
         }
