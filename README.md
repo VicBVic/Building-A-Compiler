@@ -11,3 +11,11 @@ nuget.org
 https://www.nuget.org/api/v2/
 
 https://marketplace.visualstudio.com/items?itemName=VisualStudioClient.MicrosoftVisualStudio2022InstallerProjects
+
+# GENERARE COMPILER IN IDE
+
+$(SolutionDir)IDE\bin\Debug\Compiler
+
+IDE\bin\Debug\Compiler
+
+Compiler
