@@ -14,6 +14,8 @@ https://marketplace.visualstudio.com/items?itemName=VisualStudioClient.Microsoft
 
 # GENERARE COMPILER IN IDE
 
--$(SolutionDir)IDE\bin\Debug\Compiler
--IDE\bin\Debug\Compiler
--Compiler
+$(SolutionDir)IDE\bin\Debug\Compiler
+
+IDE\bin\Debug\Compiler
+
+Compiler
