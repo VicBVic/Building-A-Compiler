@@ -78,9 +78,15 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)IDE\bin\Debug\Compiler</OutDir>
+    <IntDir>IDE\bin\Debug\Compiler</IntDir>
+    <TargetName>Compiler</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>Compiler</TargetName>
+    <OutDir>$(SolutionDir)IDE\bin\Debug\Compiler</OutDir>
+    <IntDir>IDE\bin\Debug\Compiler</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

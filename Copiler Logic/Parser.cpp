@@ -1,8 +1,10 @@
 #include "Parser.h"
 #include <vector>
 #include <fstream>
+#include <iostream>
 
 std::ifstream in("main.tmp");
+//std::ofstream out("hereyoudumbfuck");
 
 std::vector<std::string> Parser::gettokens() {
 	std::string line;
@@ -15,6 +17,7 @@ std::vector<std::string> Parser::gettokens() {
 			switch (c)
 			{
 			case ' ':
+			case '\t':
 				tokens.push_back(token);
 				token = "";
 				break;
@@ -29,8 +32,12 @@ std::vector<std::string> Parser::gettokens() {
 			case '*':
 			case '%':
 			case ',':
-				tokens.push_back(token);
+			case '^':
+			case '&':
+			case '|':
+			case '=':
 				tokens.push_back(std::string(1, c));
+				tokens.push_back(token);
 				token = "";
 				break;
 			default:
@@ -38,7 +45,9 @@ std::vector<std::string> Parser::gettokens() {
 				break;
 			}
 		}
+		tokens.push_back(token);
 	}
+	in.close();
 	return tokens;
 }
 

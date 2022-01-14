@@ -6,6 +6,6 @@
 class Parser
 {
 public:
-	std::vector<std::vector<std::string>> gettokens();
+	std::vector<std::string> gettokens();
 };
 

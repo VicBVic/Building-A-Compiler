@@ -43,6 +43,7 @@ namespace IDE
         {
             removemark();
             FTC.Show();
+            run.Enabled = true;
             projectName = n;
             FTC.Text = File.ReadAllText(@"Projects\" + n + @"\main.rv");
         }
@@ -71,9 +72,9 @@ namespace IDE
             FTC.BookmarkColor= Color.Red;
             if (!Directory.Exists("Projects")) Directory.CreateDirectory("Projects");
             if (!Directory.Exists("Compiler")) Directory.CreateDirectory("Compiler");
-            if(File.Exists(@"Compiler\main.tmp"))File.Create(@"Compiler\main.tmp").Close();
             loadProjects();
             FTC.Hide();
+            run.Enabled = false;
         }
 
         private void addProject(object sender, CancelEventArgs e)
@@ -101,9 +102,13 @@ namespace IDE
         {
             save();
             removemark();
-            File.WriteAllText(@"Compiler\main.tmp", FTC.Text);
-            Process p=Process.Start(@"Compiler\Compiler.exe");
+            File.WriteAllText(@"main.tmp", FTC.Text);
+            Process p=new Process();
+            Console.OpenStandardOutput();
+            p.StartInfo.FileName = @"Compiler\Compiler.exe";
+            p.Start();
             p.WaitForExit();
+            File.Delete(@"main.tmp");
             if (p.ExitCode == 0) return;
 
             int errorcode = p.ExitCode%10;
