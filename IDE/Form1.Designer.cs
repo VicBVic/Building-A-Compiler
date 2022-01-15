@@ -34,11 +34,11 @@
             this.panouGeneral = new System.Windows.Forms.FlowLayoutPanel();
             this.add = new System.Windows.Forms.Button();
             this.splitterSecundar = new System.Windows.Forms.SplitContainer();
-            this.projectList = new System.Windows.Forms.FlowLayoutPanel();
             this.splitterFTC = new System.Windows.Forms.SplitContainer();
             this.panouFTC = new System.Windows.Forms.FlowLayoutPanel();
             this.run = new System.Windows.Forms.Button();
             this.FTC = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.files = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitter)).BeginInit();
             this.mainSplitter.Panel1.SuspendLayout();
             this.mainSplitter.Panel2.SuspendLayout();
@@ -103,7 +103,7 @@
             // 
             // splitterSecundar.Panel1
             // 
-            this.splitterSecundar.Panel1.Controls.Add(this.projectList);
+            this.splitterSecundar.Panel1.Controls.Add(this.files);
             // 
             // splitterSecundar.Panel2
             // 
@@ -111,14 +111,6 @@
             this.splitterSecundar.Size = new System.Drawing.Size(800, 421);
             this.splitterSecundar.SplitterDistance = 100;
             this.splitterSecundar.TabIndex = 2;
-            // 
-            // projectList
-            // 
-            this.projectList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.projectList.Location = new System.Drawing.Point(0, 0);
-            this.projectList.Name = "projectList";
-            this.projectList.Size = new System.Drawing.Size(98, 419);
-            this.projectList.TabIndex = 3;
             // 
             // splitterFTC
             // 
@@ -180,7 +172,6 @@
             this.FTC.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.FTC.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.FTC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FTC.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.FTC.ForeColor = System.Drawing.Color.Coral;
             this.FTC.IsReplaceMode = false;
             this.FTC.Location = new System.Drawing.Point(0, 0);
@@ -194,6 +185,14 @@
             this.FTC.Text = "fastColoredTextBox1";
             this.FTC.Zoom = 100;
             this.FTC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FTC_KeyDown);
+            // 
+            // files
+            // 
+            this.files.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.files.Location = new System.Drawing.Point(0, 0);
+            this.files.Name = "files";
+            this.files.Size = new System.Drawing.Size(98, 419);
+            this.files.TabIndex = 0;
             // 
             // Form1
             // 
@@ -229,12 +228,12 @@
         private System.Windows.Forms.SplitContainer mainSplitter;
         private System.Windows.Forms.FlowLayoutPanel panouGeneral;
         private System.Windows.Forms.SplitContainer splitterSecundar;
-        private System.Windows.Forms.FlowLayoutPanel projectList;
         private System.Windows.Forms.SplitContainer splitterFTC;
         private System.Windows.Forms.FlowLayoutPanel panouFTC;
         private System.Windows.Forms.Button run;
         private FastColoredTextBoxNS.FastColoredTextBox FTC;
         private System.Windows.Forms.Button add;
+        private System.Windows.Forms.TreeView files;
     }
 }
 

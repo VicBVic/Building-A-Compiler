@@ -56,14 +56,14 @@ namespace IDE
 
         private void loadProjects() 
         {
-            projectList.Controls.Clear();
+            //projectList.Controls.Clear();
             foreach (String name in Directory.EnumerateDirectories("Projects"))
             {
                 String n=name.Remove(0,9);
                 Button button = new Button();
                 button.Text = n;
                 button.Click += new System.EventHandler(projectClick);
-                projectList.Controls.Add(button);
+                //projectList.Controls.Add(button);
             }
         }
 
@@ -79,11 +79,11 @@ namespace IDE
 
         private void addProject(object sender, CancelEventArgs e)
         {
-            String n = (sender as creareProiect).name;
-            Directory.CreateDirectory(@"Projects\" + n);
-            File.Create(@"Projects\" + n + @"\main.rv").Close();
+            //String n = (sender as creareProiect).name;
+            //Directory.CreateDirectory(@"Projects\" + n);
+            //File.Create(@"Projects\" + n + @"\main.rv").Close();
             loadProjects();
-            openProject(n);
+            //openProject(n);
         }
 
         private void add_Click(object sender, EventArgs e)
