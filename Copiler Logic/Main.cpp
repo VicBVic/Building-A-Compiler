@@ -42,11 +42,7 @@ int main()
 	*/
 
 	std::vector<std::string> tokens = Parser().gettokens();
-	int ind = 0;
-	while (ind<tokens.size())
-	{
-		std::cout << tokens[ind++]<<"|\n";
-	}
+	
 	std::cout << '\n';
 	system("pause");
 	return 0;

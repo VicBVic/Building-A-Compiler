@@ -28,17 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.mainSplitter = new System.Windows.Forms.SplitContainer();
             this.panouGeneral = new System.Windows.Forms.FlowLayoutPanel();
             this.add = new System.Windows.Forms.Button();
             this.splitterSecundar = new System.Windows.Forms.SplitContainer();
+            this.files = new System.Windows.Forms.TreeView();
             this.splitterFTC = new System.Windows.Forms.SplitContainer();
             this.panouFTC = new System.Windows.Forms.FlowLayoutPanel();
             this.run = new System.Windows.Forms.Button();
-            this.FTC = new FastColoredTextBoxNS.FastColoredTextBox();
-            this.files = new System.Windows.Forms.TreeView();
+            this.tabs = new System.Windows.Forms.TabControl();
+            this.salv = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitter)).BeginInit();
             this.mainSplitter.Panel1.SuspendLayout();
             this.mainSplitter.Panel2.SuspendLayout();
@@ -53,7 +52,6 @@
             this.splitterFTC.Panel2.SuspendLayout();
             this.splitterFTC.SuspendLayout();
             this.panouFTC.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FTC)).BeginInit();
             this.SuspendLayout();
             // 
             // mainSplitter
@@ -109,8 +107,16 @@
             // 
             this.splitterSecundar.Panel2.Controls.Add(this.splitterFTC);
             this.splitterSecundar.Size = new System.Drawing.Size(800, 421);
-            this.splitterSecundar.SplitterDistance = 100;
+            this.splitterSecundar.SplitterDistance = 150;
             this.splitterSecundar.TabIndex = 2;
+            // 
+            // files
+            // 
+            this.files.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.files.Location = new System.Drawing.Point(0, 0);
+            this.files.Name = "files";
+            this.files.Size = new System.Drawing.Size(148, 419);
+            this.files.TabIndex = 0;
             // 
             // splitterFTC
             // 
@@ -126,73 +132,50 @@
             // 
             // splitterFTC.Panel2
             // 
-            this.splitterFTC.Panel2.Controls.Add(this.FTC);
-            this.splitterFTC.Size = new System.Drawing.Size(696, 421);
+            this.splitterFTC.Panel2.Controls.Add(this.tabs);
+            this.splitterFTC.Size = new System.Drawing.Size(646, 421);
             this.splitterFTC.SplitterDistance = 26;
             this.splitterFTC.TabIndex = 1;
             // 
             // panouFTC
             // 
             this.panouFTC.Controls.Add(this.run);
+            this.panouFTC.Controls.Add(this.salv);
             this.panouFTC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panouFTC.Location = new System.Drawing.Point(0, 0);
             this.panouFTC.Margin = new System.Windows.Forms.Padding(5);
             this.panouFTC.Name = "panouFTC";
-            this.panouFTC.Size = new System.Drawing.Size(694, 24);
+            this.panouFTC.Size = new System.Drawing.Size(644, 24);
             this.panouFTC.TabIndex = 1;
             // 
             // run
             // 
             this.run.Location = new System.Drawing.Point(3, 3);
             this.run.Name = "run";
-            this.run.Size = new System.Drawing.Size(50, 25);
+            this.run.Size = new System.Drawing.Size(75, 25);
             this.run.TabIndex = 0;
             this.run.Text = "Run";
             this.run.UseVisualStyleBackColor = true;
             this.run.Click += new System.EventHandler(this.run_Click);
             // 
-            // FTC
+            // tabs
             // 
-            this.FTC.AutoCompleteBrackets = true;
-            this.FTC.AutoCompleteBracketsList = new char[] {
-        '(',
-        ')',
-        '{',
-        '}',
-        '[',
-        ']',
-        '\"',
-        '\"',
-        '\'',
-        '\''};
-            this.FTC.AutoScrollMinSize = new System.Drawing.Size(221, 18);
-            this.FTC.BackBrush = null;
-            this.FTC.CharHeight = 18;
-            this.FTC.CharWidth = 10;
-            this.FTC.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.FTC.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.FTC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FTC.ForeColor = System.Drawing.Color.Coral;
-            this.FTC.IsReplaceMode = false;
-            this.FTC.Location = new System.Drawing.Point(0, 0);
-            this.FTC.Margin = new System.Windows.Forms.Padding(5);
-            this.FTC.Name = "FTC";
-            this.FTC.Paddings = new System.Windows.Forms.Padding(0);
-            this.FTC.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.FTC.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("FTC.ServiceColors")));
-            this.FTC.Size = new System.Drawing.Size(694, 389);
-            this.FTC.TabIndex = 2;
-            this.FTC.Text = "fastColoredTextBox1";
-            this.FTC.Zoom = 100;
-            this.FTC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FTC_KeyDown);
+            this.tabs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabs.Location = new System.Drawing.Point(0, 0);
+            this.tabs.Name = "tabs";
+            this.tabs.SelectedIndex = 0;
+            this.tabs.Size = new System.Drawing.Size(644, 389);
+            this.tabs.TabIndex = 0;
             // 
-            // files
+            // salv
             // 
-            this.files.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.files.Location = new System.Drawing.Point(0, 0);
-            this.files.Name = "files";
-            this.files.Size = new System.Drawing.Size(98, 419);
-            this.files.TabIndex = 0;
+            this.salv.Location = new System.Drawing.Point(84, 3);
+            this.salv.Name = "salv";
+            this.salv.Size = new System.Drawing.Size(75, 25);
+            this.salv.TabIndex = 1;
+            this.salv.Text = "Save";
+            this.salv.UseVisualStyleBackColor = true;
+            this.salv.Click += new System.EventHandler(this.salv_Click);
             // 
             // Form1
             // 
@@ -218,7 +201,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitterFTC)).EndInit();
             this.splitterFTC.ResumeLayout(false);
             this.panouFTC.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.FTC)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -231,9 +213,10 @@
         private System.Windows.Forms.SplitContainer splitterFTC;
         private System.Windows.Forms.FlowLayoutPanel panouFTC;
         private System.Windows.Forms.Button run;
-        private FastColoredTextBoxNS.FastColoredTextBox FTC;
         private System.Windows.Forms.Button add;
         private System.Windows.Forms.TreeView files;
+        private System.Windows.Forms.TabControl tabs;
+        private System.Windows.Forms.Button salv;
     }
 }
 

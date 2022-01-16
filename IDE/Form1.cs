@@ -20,61 +20,93 @@ namespace IDE
             InitializeComponent();
         }
 
-        private String projectName;
+        public String projectpath;
         private int eline = 0;
+        public dynamic settings;
 
         private void ResizeForm(object sender, EventArgs e)
         {
             mainSplitter.Panel1MinSize = 25;
             splitterFTC.Panel1MinSize = 25;
-            splitterSecundar.Panel1MinSize = 100;
+            splitterSecundar.Panel1MinSize = 150;
             mainSplitter.SplitterDistance = 25;
             splitterFTC.SplitterDistance = 25;
-            splitterSecundar.SplitterDistance = 100;
+            splitterSecundar.SplitterDistance = 150;
         }
 
         private void removemark()
         {
-            if(eline!=0)FTC.UnbookmarkLine(eline);
-            eline = 0;
+            //if(eline!=0)FTC.UnbookmarkLine(eline);
+           // eline = 0;
         }
 
         private void openProject(String n)
         {
-            removemark();
-            FTC.Show();
-            run.Enabled = true;
-            projectName = n;
-            FTC.Text = File.ReadAllText(@"Projects\" + n + @"\main.rv");
+            //removemark();
+            //FTC.Show();
+            //run.Enabled = true;
+            //projectName = n;
+            //FTC.Text = File.ReadAllText(@"Projects\" + n + @"\main.rv");
         }
 
         private void projectClick(object sender, EventArgs e)
         {
-            String n = (sender as Button).Text;
-            openProject(n);
+            //String n = (sender as Button).Text;
+            //openProject(n);
         }
 
-        private void loadProjects() 
+        private string removepath(string path)
         {
-            //projectList.Controls.Clear();
-            foreach (String name in Directory.EnumerateDirectories("Projects"))
+            string name;
+            name = path.Substring(path.LastIndexOf('\\')+1);
+            return name;
+        } 
+
+        private void loadProject(TreeNodeCollection nodes,string path) 
+        {
+            foreach(string name in Directory.EnumerateFiles(path))
             {
-                String n=name.Remove(0,9);
-                Button button = new Button();
-                button.Text = n;
-                button.Click += new System.EventHandler(projectClick);
-                //projectList.Controls.Add(button);
+                nodes.Add(removepath(name));
+                nodes[nodes.Count - 1].Tag = name;
             }
+            
+            foreach (string name in Directory.EnumerateDirectories(path))
+            {
+                nodes.Add(removepath(name));
+                loadProject(nodes[nodes.Count - 1].Nodes,name);
+            }
+        }
+
+        private void nodeclick(object sender,TreeNodeMouseClickEventArgs e)
+        {
+            TreeNode node = e.Node;
+            if (node.Tag == null) return;
+            string n = node.Tag.ToString();
+            foreach(TabPage t in tabs.TabPages)
+            {
+                if (t.Tag.ToString() == n) return;
+            }
+            TabPage tab=new TabPage();
+            FastColoredTextBoxNS.FastColoredTextBox FCTB = new FastColoredTextBoxNS.FastColoredTextBox();
+            FCTB.Dock = DockStyle.Fill;
+            FCTB.Text = File.ReadAllText(n); 
+            tab.Controls.Add(FCTB);
+            tab.Tag = n;
+            tab.Text=removepath(n);
+            tabs.TabPages.Add(tab);
+            tabs.SelectedIndex = tabs.TabPages.Count-1;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            FTC.BookmarkColor= Color.Red;
+            //FTC.BookmarkColor= Color.Red;
             if (!Directory.Exists("Projects")) Directory.CreateDirectory("Projects");
             if (!Directory.Exists("Compiler")) Directory.CreateDirectory("Compiler");
-            loadProjects();
-            FTC.Hide();
-            run.Enabled = false;
+            files.Nodes.Add(removepath(projectpath));
+            loadProject(files.Nodes[0].Nodes,projectpath);
+            //run.Enabled = false;
+            this.WindowState = FormWindowState.Maximized;
+            files.NodeMouseDoubleClick += new TreeNodeMouseClickEventHandler(nodeclick);
         }
 
         private void addProject(object sender, CancelEventArgs e)
@@ -82,7 +114,7 @@ namespace IDE
             //String n = (sender as creareProiect).name;
             //Directory.CreateDirectory(@"Projects\" + n);
             //File.Create(@"Projects\" + n + @"\main.rv").Close();
-            loadProjects();
+            //loadProject();
             //openProject(n);
         }
 
@@ -95,11 +127,12 @@ namespace IDE
 
         private void save()
         {
-            File.WriteAllText(@"Projects\" + projectName + @"\main.rv", FTC.Text);
+            File.WriteAllText(tabs.SelectedTab.Tag.ToString(),(tabs.SelectedTab.Controls[0] as FastColoredTextBoxNS.FastColoredTextBox).Text);
         }
 
         private void runBoy()
         {
+            FastColoredTextBoxNS.FastColoredTextBox FTC = tabs.SelectedTab.Controls[0] as FastColoredTextBoxNS.FastColoredTextBox;
             save();
             removemark();
             File.WriteAllText(@"main.tmp", FTC.Text);
@@ -126,8 +159,8 @@ namespace IDE
                 
             }
 
-            FTC.BookmarkLine (line);
-            FTC.GotoNextBookmark(line);
+            //FTC.BookmarkLine (line);
+            //FTC.GotoNextBookmark(line);
             eline = line;
         }
 
@@ -135,7 +168,7 @@ namespace IDE
         {
             if(e.Control&& e.KeyValue == 83)
             {
-                save();
+                //save();
             }
             if (e.Control && e.KeyValue == 82)
             {
@@ -147,6 +180,11 @@ namespace IDE
         private void run_Click(object sender, EventArgs e)
         {
             runBoy();
+        }
+
+        private void salv_Click(object sender, EventArgs e)
+        {
+            save();
         }
     }
 }

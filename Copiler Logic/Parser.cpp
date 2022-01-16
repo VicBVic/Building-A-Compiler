@@ -4,7 +4,7 @@
 #include <iostream>
 
 std::ifstream in("main.tmp");
-//std::ofstream out("hereyoudumbfuck");
+std::ofstream out("tokens.log");
 
 std::vector<std::string> Parser::gettokens() {
 	std::string line;
@@ -18,7 +18,7 @@ std::vector<std::string> Parser::gettokens() {
 			{
 			case ' ':
 			case '\t':
-				tokens.push_back(token);
+				if (token != "")tokens.push_back(token);
 				token = "";
 				break;
 			case ';':
@@ -36,8 +36,8 @@ std::vector<std::string> Parser::gettokens() {
 			case '&':
 			case '|':
 			case '=':
+				if (token != "")tokens.push_back(token);
 				tokens.push_back(std::string(1, c));
-				tokens.push_back(token);
 				token = "";
 				break;
 			default:
@@ -45,9 +45,11 @@ std::vector<std::string> Parser::gettokens() {
 				break;
 			}
 		}
-		tokens.push_back(token);
+		if (token != "")tokens.push_back(token);
 	}
 	in.close();
+	for (auto token : tokens)out << token << "|\n";
+	out.close();
 	return tokens;
 }
 

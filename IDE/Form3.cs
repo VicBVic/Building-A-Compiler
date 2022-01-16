@@ -25,7 +25,11 @@ namespace IDE
 
         private void openproject(object sender, EventArgs e)
         {
-            MessageBox.Show((sender as LinkLabel).Text);
+            Form1 f = new Form1();
+            f.projectpath = (sender as LinkLabel).Text;
+            f.settings = sett;
+            f.ShowDialog();
+            Close();
         }
 
         private void addproject(string project)
@@ -61,22 +65,25 @@ namespace IDE
             if (!File.Exists("settings.json"))sett.resetToDefault();
             settings=sett.getsettings();
             getprojects();
+            if(!Directory.Exists(settings.projectdir))Directory.CreateDirectory(settings.projectdir);
         }
 
-        private void close(object sender, FormClosedEventArgs e)
+        private void close(object sender, FormClosingEventArgs e)
         {
-            //Close();
+            if ((sender as creareProiect).created) {
+                Close(); 
+            }
         }
 
-        private void add_Click(object sender, EventArgs e)
+        private void addnew_Click(object sender, EventArgs e)
         {
             creareProiect create=new creareProiect();
             create.settings=settings;
             create.Show();
-            create.FormClosed += new FormClosedEventHandler(close);
+            create.FormClosing += new FormClosingEventHandler(close);
         }
 
-        private void open_Click(object sender, EventArgs e)
+        private void addold_Click(object sender, EventArgs e)
         {
             folderBrowserDialog1 = new FolderBrowserDialog();
             folderBrowserDialog1.ShowNewFolderButton = false;
@@ -92,5 +99,20 @@ namespace IDE
 
         }
 
+        private void open_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog1 = new FolderBrowserDialog();
+            folderBrowserDialog1.ShowNewFolderButton = false;
+            folderBrowserDialog1.ShowDialog();
+            if (folderBrowserDialog1.SelectedPath == null) return;
+            settings.projects.Add(folderBrowserDialog1.SelectedPath);
+            sett.setsettings(settings);
+            addproject(folderBrowserDialog1.SelectedPath);
+            Form1 f=new Form1();
+            f.settings=settings;
+            f.projectpath=folderBrowserDialog1.SelectedPath;
+            f.ShowDialog();
+            Close();
+        }
     }
 }

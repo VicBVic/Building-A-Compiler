@@ -30,11 +30,12 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.actionpanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.add = new System.Windows.Forms.Button();
-            this.open = new System.Windows.Forms.Button();
+            this.addnew = new System.Windows.Forms.Button();
+            this.addold = new System.Windows.Forms.Button();
             this.set = new System.Windows.Forms.Button();
             this.projectpanel = new System.Windows.Forms.FlowLayoutPanel();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.open = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -62,7 +63,8 @@
             // 
             // actionpanel
             // 
-            this.actionpanel.Controls.Add(this.add);
+            this.actionpanel.Controls.Add(this.addnew);
+            this.actionpanel.Controls.Add(this.addold);
             this.actionpanel.Controls.Add(this.open);
             this.actionpanel.Controls.Add(this.set);
             this.actionpanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -71,29 +73,29 @@
             this.actionpanel.Size = new System.Drawing.Size(782, 25);
             this.actionpanel.TabIndex = 0;
             // 
-            // add
+            // addnew
             // 
-            this.add.Location = new System.Drawing.Point(3, 3);
-            this.add.Name = "add";
-            this.add.Size = new System.Drawing.Size(75, 25);
-            this.add.TabIndex = 1;
-            this.add.Text = "New";
-            this.add.UseVisualStyleBackColor = true;
-            this.add.Click += new System.EventHandler(this.add_Click);
+            this.addnew.Location = new System.Drawing.Point(3, 3);
+            this.addnew.Name = "addnew";
+            this.addnew.Size = new System.Drawing.Size(75, 25);
+            this.addnew.TabIndex = 1;
+            this.addnew.Text = "New";
+            this.addnew.UseVisualStyleBackColor = true;
+            this.addnew.Click += new System.EventHandler(this.addnew_Click);
             // 
-            // open
+            // addold
             // 
-            this.open.Location = new System.Drawing.Point(84, 3);
-            this.open.Name = "open";
-            this.open.Size = new System.Drawing.Size(75, 25);
-            this.open.TabIndex = 2;
-            this.open.Text = "Open";
-            this.open.UseVisualStyleBackColor = true;
-            this.open.Click += new System.EventHandler(this.open_Click);
+            this.addold.Location = new System.Drawing.Point(84, 3);
+            this.addold.Name = "addold";
+            this.addold.Size = new System.Drawing.Size(75, 25);
+            this.addold.TabIndex = 2;
+            this.addold.Text = "Add";
+            this.addold.UseVisualStyleBackColor = true;
+            this.addold.Click += new System.EventHandler(this.addold_Click);
             // 
             // set
             // 
-            this.set.Location = new System.Drawing.Point(165, 3);
+            this.set.Location = new System.Drawing.Point(246, 3);
             this.set.Name = "set";
             this.set.Size = new System.Drawing.Size(75, 25);
             this.set.TabIndex = 3;
@@ -109,6 +111,16 @@
             this.projectpanel.Name = "projectpanel";
             this.projectpanel.Size = new System.Drawing.Size(782, 724);
             this.projectpanel.TabIndex = 0;
+            // 
+            // open
+            // 
+            this.open.Location = new System.Drawing.Point(165, 3);
+            this.open.Name = "open";
+            this.open.Size = new System.Drawing.Size(75, 23);
+            this.open.TabIndex = 4;
+            this.open.Text = "Open";
+            this.open.UseVisualStyleBackColor = true;
+            this.open.Click += new System.EventHandler(this.open_Click);
             // 
             // Form3
             // 
@@ -134,10 +146,11 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.FlowLayoutPanel actionpanel;
-        private System.Windows.Forms.Button add;
-        private System.Windows.Forms.Button open;
+        private System.Windows.Forms.Button addnew;
+        private System.Windows.Forms.Button addold;
         private System.Windows.Forms.Button set;
         private System.Windows.Forms.FlowLayoutPanel projectpanel;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Button open;
     }
 }
