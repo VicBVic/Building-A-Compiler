@@ -104,7 +104,7 @@ namespace IDE
             if (!Directory.Exists("Compiler")) Directory.CreateDirectory("Compiler");
             files.Nodes.Add(removepath(projectpath));
             loadProject(files.Nodes[0].Nodes,projectpath);
-            //run.Enabled = false;
+            settings = new Settings().getsettings();
             this.WindowState = FormWindowState.Maximized;
             files.NodeMouseDoubleClick += new TreeNodeMouseClickEventHandler(nodeclick);
         }

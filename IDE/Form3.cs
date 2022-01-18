@@ -63,7 +63,7 @@ namespace IDE
         private void Form3_Load(object sender, EventArgs e)
         {
             if (!File.Exists("settings.json"))sett.resetToDefault();
-            settings=sett.getsettings();
+            settings=new Settings().getsettings();
             getprojects();
             if(!Directory.Exists(settings.projectdir))Directory.CreateDirectory(settings.projectdir);
         }
@@ -75,7 +75,7 @@ namespace IDE
             }
         }
 
-        private void addnew_Click(object sender, EventArgs e)
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             creareProiect create=new creareProiect();
             create.settings=settings;
@@ -83,36 +83,52 @@ namespace IDE
             create.FormClosing += new FormClosingEventHandler(close);
         }
 
-        private void addold_Click(object sender, EventArgs e)
+        private bool match(string other)
+        {
+            return other == folderBrowserDialog1.SelectedPath;
+        }
+
+        private bool addproject()
         {
             folderBrowserDialog1 = new FolderBrowserDialog();
             folderBrowserDialog1.ShowNewFolderButton = false;
             folderBrowserDialog1.ShowDialog();
-            if (folderBrowserDialog1.SelectedPath == null) return;
+            if (folderBrowserDialog1.SelectedPath == "") return false ;
+            Predicate<string> pred = match;
+            if (settings.projects.FindIndex(pred) != -1)
+            {
+                MessageBox.Show("The project already exists!");
+                return false ;
+            }
             settings.projects.Add(folderBrowserDialog1.SelectedPath);
             sett.setsettings(settings);
             addproject(folderBrowserDialog1.SelectedPath);
+            return true;
         }
 
-        private void set_Click(object sender, EventArgs e)
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            addproject();
         }
 
-        private void open_Click(object sender, EventArgs e)
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            folderBrowserDialog1 = new FolderBrowserDialog();
-            folderBrowserDialog1.ShowNewFolderButton = false;
-            folderBrowserDialog1.ShowDialog();
-            if (folderBrowserDialog1.SelectedPath == null) return;
-            settings.projects.Add(folderBrowserDialog1.SelectedPath);
-            sett.setsettings(settings);
-            addproject(folderBrowserDialog1.SelectedPath);
+            if (!addproject()) return;
             Form1 f=new Form1();
             f.settings=settings;
             f.projectpath=folderBrowserDialog1.SelectedPath;
             f.ShowDialog();
             Close();
+        }
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form4 f=new Form4();
+            f.settings = settings;
         }
     }
 }
