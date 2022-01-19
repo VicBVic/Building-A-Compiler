@@ -99,9 +99,6 @@ namespace IDE
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //FTC.BookmarkColor= Color.Red;
-            if (!Directory.Exists("Projects")) Directory.CreateDirectory("Projects");
-            if (!Directory.Exists("Compiler")) Directory.CreateDirectory("Compiler");
             files.Nodes.Add(removepath(projectpath));
             loadProject(files.Nodes[0].Nodes,projectpath);
             settings = new Settings().getsettings();

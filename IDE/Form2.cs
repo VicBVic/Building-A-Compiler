@@ -17,7 +17,7 @@ namespace IDE
 
         public dynamic settings;
         private string path;
-        public bool created=false;
+        public string fpath="";
         public creareProiect()
         {
             InitializeComponent();
@@ -49,15 +49,10 @@ namespace IDE
                 return;
             }
             settings.projects.Add(fullpath.Text);
-            Settings sett=new Settings();
-            sett.setsettings(settings);
-            created = true;
-            Form1 f = new Form1();
+            new Settings().setsettings(settings);
             Directory.CreateDirectory(fullpath.Text);
-            File.Create(fullpath.Text+@"\main.rv").Close();
-            f.projectpath = fullpath.Text;
-            f.settings = settings;
-            f.ShowDialog();
+            File.Create(fullpath.Text + @"\main.rv").Close();
+            fpath=fullpath.Text;
             Close();
         }
 
