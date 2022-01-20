@@ -62,7 +62,7 @@ namespace IDE
             loadprojects();
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void save_Click(object sender, EventArgs e)
         {
             new Settings().setsettings(settings);
             new Router().transition(this, new Form3());
@@ -77,5 +77,17 @@ namespace IDE
 
         }
 
+        private void remove_Click(object sender, EventArgs e)
+        {
+            settings.projects.Clear();
+            new Settings().setsettings(settings);
+            loadprojects();
+        }
+
+        private void defaultt_Click(object sender, EventArgs e)
+        {
+            new Settings().resetToDefault(settings);
+            Form4_Load(new object(),new EventArgs());
+        }
     }
 }

@@ -65,8 +65,8 @@ namespace IDE
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            if (!File.Exists("settings.json"))new Settings().resetToDefault();
-            settings=new Settings().getsettings();
+            settings = new Settings().getsettings();
+            if (!File.Exists("settings.json"))new Settings().resetToDefault(settings);
             getprojects();
             if(!Directory.Exists(settings.projectdir))Directory.CreateDirectory(settings.projectdir);
         }
