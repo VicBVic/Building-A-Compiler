@@ -46,7 +46,7 @@ namespace IDE
                 Button button = new Button();
                 panel.Width = 650 ;
                 panel.Height = 25;
-                button.Text = "Delete";
+                button.Text = "Remove";
                 button.Tag = project;
                 button.Click += new EventHandler(deleteclick);
                 panel.Controls.Add(box);
