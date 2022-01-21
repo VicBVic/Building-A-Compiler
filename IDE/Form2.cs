@@ -74,7 +74,7 @@ namespace IDE
         private void validatekey(object sender, KeyEventArgs e)
         {
             int val = e.KeyValue;
-            e.SuppressKeyPress = !((val >= 'a' && val<='z') || (val>='A'&&val<='Z') || (val>= '0' && val<='9')||(val==' ')||(val==8));
+            e.SuppressKeyPress = !((val >= 'a' && val <= 'z') || (val >= 'A' && val <= 'Z') || (val >= '0' && val <= '9') || (val == ' ') || (val == 8));
         }
     }
 }

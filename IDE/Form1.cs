@@ -63,6 +63,8 @@ namespace IDE
             {
                 nodes.Add(removepath(name));
                 nodes[nodes.Count - 1].Tag = name;
+                nodes[nodes.Count - 1].ImageIndex = 1;
+                nodes[nodes.Count - 1].SelectedImageIndex = 1;
             }
             
             foreach (string name in Directory.EnumerateDirectories(path))
@@ -70,13 +72,15 @@ namespace IDE
                 nodes.Add(removepath(name));
                 nodes[nodes.Count - 1].Tag = name;
                 loadProject(nodes[nodes.Count - 1].Nodes,name);
+                nodes[nodes.Count - 1].ImageIndex = 0;
+                nodes[nodes.Count - 1].SelectedImageIndex = 0;
             }
         }
 
         private void nodeclick(object sender,TreeNodeMouseClickEventArgs e)
         {
             TreeNode node = e.Node;
-            if (node.Tag == null) return;
+            if (node.SelectedImageIndex!=1) return;
             string n = node.Tag.ToString();
             foreach(TabPage t in tabs.TabPages)
             {
@@ -97,7 +101,11 @@ namespace IDE
         {
             runStripButton1.Enabled = false;
             runToolStripMenuItem.Enabled = false;
+            saveToolStripButton.Enabled = false;
+            saveToolStripMenuItem.Enabled = false;
+            files.ImageList = imageList1;
             files.Nodes.Add(removepath(projectpath));
+            files.Nodes[0].Tag = projectpath;
             loadProject(files.Nodes[0].Nodes,projectpath);
             settings = new Settings().getsettings();
             this.WindowState = FormWindowState.Maximized;
@@ -161,12 +169,20 @@ namespace IDE
 
         private void newFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Form5 f=new Form5();
+            if (files.SelectedNode == null) f.node = files.Nodes[0];
+            else f.node = files.SelectedNode;
+            f.file = true;
+            f.ShowDialog();
         }
 
         private void newFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Form5 f = new Form5();
+            if (files.SelectedNode == null) f.node = files.Nodes[0];
+            else f.node = files.SelectedNode;
+            f.file = false;
+            f.ShowDialog();
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -189,16 +205,23 @@ namespace IDE
             new Router().transition(this, new Form3());
         }
 
-        private void tabs_TabIndexChanged(object sender, EventArgs e)
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            deletenode(files.SelectedNode);
+        }
+
+        private void tabs_ControlAdded(object sender, ControlEventArgs e)
+        {
+            saveToolStripButton.Enabled = true;
+            saveToolStripMenuItem.Enabled = true;
             string file = tabs.SelectedTab.Tag.ToString();
-            if (file[file.Length-1]=='v'&&
-                file[file.Length - 1] == 'r'&&
-                file[file.Length - 1] == '.'
+            if (file[file.Length - 1] == 'v' &&
+                file[file.Length - 2] == 'r' &&
+                file[file.Length - 3] == '.'
                 )
             {
-                runStripButton1.Enabled=true;
-                runToolStripMenuItem.Enabled=true;
+                runStripButton1.Enabled = true;
+                runToolStripMenuItem.Enabled = true;
             }
             else
             {
@@ -207,9 +230,24 @@ namespace IDE
             }
         }
 
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tabs_SelectedIndexChanged(object sender, EventArgs e)
         {
-            deletenode(files.SelectedNode);
+            saveToolStripButton.Enabled = true;
+            saveToolStripMenuItem.Enabled = true;
+            string file = tabs.SelectedTab.Tag.ToString();
+            if (file[file.Length - 1] == 'v' &&
+                file[file.Length - 2] == 'r' &&
+                file[file.Length - 3] == '.'
+                )
+            {
+                runStripButton1.Enabled = true;
+                runToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                runStripButton1.Enabled = false;
+                runToolStripMenuItem.Enabled = false;
+            }
         }
     }
 }
