@@ -33,7 +33,7 @@ Argument* Write::execute()
 
 Variable* Write::get_value()
 {
-	return nullptr;
+	return assign->evaluate();
 }
 
 Argument* Write::make_copy()

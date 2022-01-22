@@ -12,6 +12,8 @@ public:
 	int type;
 	Operand(int type);
 	Operand();
+	Operand(char type);
+	int get_type(char c);
 
 };
 
