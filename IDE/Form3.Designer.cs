@@ -28,129 +28,136 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.actionpanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.addnew = new System.Windows.Forms.Button();
-            this.addold = new System.Windows.Forms.Button();
-            this.set = new System.Windows.Forms.Button();
-            this.projectpanel = new System.Windows.Forms.FlowLayoutPanel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.open = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.actionpanel.SuspendLayout();
+            this.projectpanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.actionpanel);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.projectpanel);
-            this.splitContainer1.Size = new System.Drawing.Size(782, 753);
-            this.splitContainer1.SplitterDistance = 25;
-            this.splitContainer1.TabIndex = 0;
-            // 
-            // actionpanel
-            // 
-            this.actionpanel.Controls.Add(this.addnew);
-            this.actionpanel.Controls.Add(this.addold);
-            this.actionpanel.Controls.Add(this.open);
-            this.actionpanel.Controls.Add(this.set);
-            this.actionpanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.actionpanel.Location = new System.Drawing.Point(0, 0);
-            this.actionpanel.Name = "actionpanel";
-            this.actionpanel.Size = new System.Drawing.Size(782, 25);
-            this.actionpanel.TabIndex = 0;
-            // 
-            // addnew
-            // 
-            this.addnew.Location = new System.Drawing.Point(3, 3);
-            this.addnew.Name = "addnew";
-            this.addnew.Size = new System.Drawing.Size(75, 25);
-            this.addnew.TabIndex = 1;
-            this.addnew.Text = "New";
-            this.addnew.UseVisualStyleBackColor = true;
-            this.addnew.Click += new System.EventHandler(this.addnew_Click);
-            // 
-            // addold
-            // 
-            this.addold.Location = new System.Drawing.Point(84, 3);
-            this.addold.Name = "addold";
-            this.addold.Size = new System.Drawing.Size(75, 25);
-            this.addold.TabIndex = 2;
-            this.addold.Text = "Add";
-            this.addold.UseVisualStyleBackColor = true;
-            this.addold.Click += new System.EventHandler(this.addold_Click);
-            // 
-            // set
-            // 
-            this.set.Location = new System.Drawing.Point(246, 3);
-            this.set.Name = "set";
-            this.set.Size = new System.Drawing.Size(75, 25);
-            this.set.TabIndex = 3;
-            this.set.Text = "Settings";
-            this.set.UseVisualStyleBackColor = true;
-            this.set.Click += new System.EventHandler(this.set_Click);
             // 
             // projectpanel
             // 
             this.projectpanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.projectpanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.projectpanel.Location = new System.Drawing.Point(0, 0);
+            this.projectpanel.Location = new System.Drawing.Point(0, 24);
+            this.projectpanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.projectpanel.Name = "projectpanel";
-            this.projectpanel.Size = new System.Drawing.Size(782, 724);
-            this.projectpanel.TabIndex = 0;
+            this.projectpanel.Size = new System.Drawing.Size(586, 588);
+            this.projectpanel.TabIndex = 2;
             // 
-            // open
+            // menuStrip1
             // 
-            this.open.Location = new System.Drawing.Point(165, 3);
-            this.open.Name = "open";
-            this.open.Size = new System.Drawing.Size(75, 23);
-            this.open.TabIndex = 4;
-            this.open.Text = "Open";
-            this.open.UseVisualStyleBackColor = true;
-            this.open.Click += new System.EventHandler(this.open_Click);
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.toolsToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.menuStrip1.Size = new System.Drawing.Size(586, 24);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newToolStripMenuItem,
+            this.addToolStripMenuItem,
+            this.openToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "&File";
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
+            this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.newToolStripMenuItem.Text = "&New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
+            // 
+            // addToolStripMenuItem
+            // 
+            this.addToolStripMenuItem.Image = global::IDE.Properties.Resources.plus;
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.ShortcutKeyDisplayString = "";
+            this.addToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.addToolStripMenuItem.Text = "&Add";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Image = global::IDE.Properties.Resources._2022_01_20;
+            this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.openToolStripMenuItem.Text = "&Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(143, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.exitToolStripMenuItem.Text = "E&xit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.toolsToolStripMenuItem.Text = "&Settings";
+            this.toolsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
             // Form3
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 753);
-            this.Controls.Add(this.splitContainer1);
+            this.ClientSize = new System.Drawing.Size(586, 612);
+            this.Controls.Add(this.projectpanel);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form3";
             this.Text = "Welcome";
             this.Load += new System.EventHandler(this.Form3_Load);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.actionpanel.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.FlowLayoutPanel actionpanel;
-        private System.Windows.Forms.Button addnew;
-        private System.Windows.Forms.Button addold;
-        private System.Windows.Forms.Button set;
-        private System.Windows.Forms.FlowLayoutPanel projectpanel;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.Button open;
+        private System.Windows.Forms.FlowLayoutPanel projectpanel;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }

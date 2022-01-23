@@ -44,6 +44,7 @@
             this.nume.Size = new System.Drawing.Size(744, 22);
             this.nume.TabIndex = 0;
             this.nume.TextChanged += new System.EventHandler(this.nume_TextChanged);
+            this.nume.KeyDown += new System.Windows.Forms.KeyEventHandler(this.validatekey);
             // 
             // labelNume
             // 

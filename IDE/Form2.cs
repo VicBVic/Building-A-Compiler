@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace IDE
 {
@@ -16,13 +17,14 @@ namespace IDE
 
         public dynamic settings;
         private string path;
-        public bool created=false;
+        public string fpath="";
         public creareProiect()
         {
             InitializeComponent();
         }
         private void creareProiect_Load(object sender, EventArgs e)
         {
+            settings = new Settings().getsettings();
             path = settings.projectdir+@"\";
             fullpath.Text = path;
             fullpath.Enabled = false;
@@ -47,15 +49,10 @@ namespace IDE
                 return;
             }
             settings.projects.Add(fullpath.Text);
-            Settings sett=new Settings();
-            sett.setsettings(settings);
-            created = true;
-            Form1 f = new Form1();
+            new Settings().setsettings(settings);
             Directory.CreateDirectory(fullpath.Text);
-            File.Create(fullpath.Text+@"\main.rv").Close();
-            f.projectpath = fullpath.Text;
-            f.settings = settings;
-            f.ShowDialog();
+            File.Create(fullpath.Text + @"\main.rv").Close();
+            fpath=fullpath.Text;
             Close();
         }
 
@@ -64,6 +61,7 @@ namespace IDE
             folderBrowserDialog1 = new FolderBrowserDialog();
             folderBrowserDialog1.ShowNewFolderButton = false;
             folderBrowserDialog1.ShowDialog();
+            if (folderBrowserDialog1.SelectedPath == "") return;
             path = folderBrowserDialog1.SelectedPath;
             fullpath.Text = path + nume.Text;
         }
@@ -71,6 +69,12 @@ namespace IDE
         private void nume_TextChanged(object sender, EventArgs e)
         {
             fullpath.Text = path + nume.Text;
+        }
+
+        private void validatekey(object sender, KeyEventArgs e)
+        {
+            int val = e.KeyValue;
+            e.SuppressKeyPress = !((val >= 'a' && val <= 'z') || (val >= 'A' && val <= 'Z') || (val >= '0' && val <= '9') || (val == ' ') || (val == 8));
         }
     }
 }
