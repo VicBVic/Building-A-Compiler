@@ -20,89 +20,115 @@ namespace IDE
             InitializeComponent();
         }
 
-        private String projectName;
+        public String projectpath;
         private int eline = 0;
+        public dynamic settings;
 
         private void ResizeForm(object sender, EventArgs e)
         {
-            mainSplitter.Panel1MinSize = 25;
-            splitterFTC.Panel1MinSize = 25;
-            splitterSecundar.Panel1MinSize = 100;
-            mainSplitter.SplitterDistance = 25;
-            splitterFTC.SplitterDistance = 25;
-            splitterSecundar.SplitterDistance = 100;
+
         }
 
         private void removemark()
         {
-            if(eline!=0)FTC.UnbookmarkLine(eline);
-            eline = 0;
+            //if(eline!=0)FTC.UnbookmarkLine(eline);
+           // eline = 0;
         }
 
         private void openProject(String n)
         {
-            removemark();
-            FTC.Show();
-            projectName = n;
-            FTC.Text = File.ReadAllText(@"Projects\" + n + @"\main.rv");
+            //removemark();
+            //FTC.Show();
+            //run.Enabled = true;
+            //projectName = n;
+            //FTC.Text = File.ReadAllText(@"Projects\" + n + @"\main.rv");
         }
 
         private void projectClick(object sender, EventArgs e)
         {
-            String n = (sender as Button).Text;
-            openProject(n);
+            //String n = (sender as Button).Text;
+            //openProject(n);
         }
 
-        private void loadProjects() 
+        private string removepath(string path)
         {
-            projectList.Controls.Clear();
-            foreach (String name in Directory.EnumerateDirectories("Projects"))
+            string name;
+            name = path.Substring(path.LastIndexOf('\\')+1);
+            return name;
+        } 
+
+        private void loadProject(TreeNodeCollection nodes,string path) 
+        {
+            foreach(string name in Directory.EnumerateFiles(path))
             {
-                String n=name.Remove(0,9);
-                Button button = new Button();
-                button.Text = n;
-                button.Click += new System.EventHandler(projectClick);
-                projectList.Controls.Add(button);
+                nodes.Add(removepath(name));
+                nodes[nodes.Count - 1].Tag = name;
+                nodes[nodes.Count - 1].ImageIndex = 1;
+                nodes[nodes.Count - 1].SelectedImageIndex = 1;
             }
+            
+            foreach (string name in Directory.EnumerateDirectories(path))
+            {
+                nodes.Add(removepath(name));
+                nodes[nodes.Count - 1].Tag = name;
+                loadProject(nodes[nodes.Count - 1].Nodes,name);
+                nodes[nodes.Count - 1].ImageIndex = 0;
+                nodes[nodes.Count - 1].SelectedImageIndex = 0;
+            }
+        }
+
+        private void nodeclick(object sender,TreeNodeMouseClickEventArgs e)
+        {
+            TreeNode node = e.Node;
+            if (node.SelectedImageIndex!=1) return;
+            string n = node.Tag.ToString();
+            foreach(TabPage t in tabs.TabPages)
+            {
+                if (t.Tag.ToString() == n) return;
+            }
+            TabPage tab=new TabPage();
+            FastColoredTextBoxNS.FastColoredTextBox FCTB = new FastColoredTextBoxNS.FastColoredTextBox();
+            FCTB.Dock = DockStyle.Fill;
+            FCTB.Text = File.ReadAllText(n); 
+            tab.Controls.Add(FCTB);
+            tab.Tag = n;
+            tab.Text=removepath(n);
+            tabs.TabPages.Add(tab);
+            tabs.SelectedIndex = tabs.TabPages.Count-1;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            FTC.BookmarkColor= Color.Red;
-            if (!Directory.Exists("Projects")) Directory.CreateDirectory("Projects");
-            loadProjects();
-            FTC.Hide();
-        }
-
-        private void addProject(object sender, CancelEventArgs e)
-        {
-            String n = (sender as creareProiect).name;
-            Directory.CreateDirectory(@"Projects\" + n);
-            FileStream tmp=File.Create(@"Projects\" + n + @"\main.rv");
-            tmp.Close();
-            loadProjects();
-            openProject(n);
-        }
-
-        private void add_Click(object sender, EventArgs e)
-        {
-            creareProiect creareProiect = new creareProiect();
-            creareProiect.FormClosing += new System.Windows.Forms.FormClosingEventHandler(addProject);
-            creareProiect.ShowDialog();
+            runStripButton1.Enabled = false;
+            runToolStripMenuItem.Enabled = false;
+            saveToolStripButton.Enabled = false;
+            saveToolStripMenuItem.Enabled = false;
+            files.ImageList = imageList1;
+            files.Nodes.Add(removepath(projectpath));
+            files.Nodes[0].Tag = projectpath;
+            loadProject(files.Nodes[0].Nodes,projectpath);
+            settings = new Settings().getsettings();
+            this.WindowState = FormWindowState.Maximized;
+            files.NodeMouseDoubleClick += new TreeNodeMouseClickEventHandler(nodeclick);
         }
 
         private void save()
         {
-            File.WriteAllText(@"Projects\" + projectName + @"\main.rv", FTC.Text);
+            File.WriteAllText(tabs.SelectedTab.Tag.ToString(),(tabs.SelectedTab.Controls[0] as FastColoredTextBoxNS.FastColoredTextBox).Text);
         }
 
         private void runBoy()
         {
+            FastColoredTextBoxNS.FastColoredTextBox FTC = tabs.SelectedTab.Controls[0] as FastColoredTextBoxNS.FastColoredTextBox;
             save();
             removemark();
-            File.WriteAllText(@"Compiler\main.tmp", FTC.Text);
-            Process p=Process.Start(@"Compiler\Compiler.exe");
+            File.WriteAllText(@"main.tmp", FTC.Text);
+            Process p=new Process();
+            Console.OpenStandardOutput();
+            p.StartInfo.FileName = @"Compiler\Compiler.exe";
+            p.Start();
             p.WaitForExit();
+            File.Delete(@"main.tmp");
             if (p.ExitCode == 0) return;
 
             int errorcode = p.ExitCode%10;
@@ -120,27 +146,108 @@ namespace IDE
                 
             }
 
-            FTC.BookmarkLine (line);
-            FTC.GotoNextBookmark(line);
+            //FTC.BookmarkLine (line);
+            //FTC.GotoNextBookmark(line);
             eline = line;
         }
 
-        private void FTC_KeyDown(object sender, KeyEventArgs e)
+        private void deletefolder(string path)
         {
-            if(e.Control&& e.KeyValue == 83)
-            {
-                save();
-            }
-            if (e.Control && e.KeyValue == 82)
-            {
-                runBoy();
-            }
-
+            Directory.Delete(path, true);
         }
 
-        private void run_Click(object sender, EventArgs e)
+        private void deletenode(TreeNode node)
+        {
+            if(node.Tag == null)
+            {
+                MessageBox.Show("Cannot delete the root folder!");
+                return;
+            }
+            deletefolder(node.Tag.ToString());
+            node.Remove();
+        }
+
+        private void newFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form5 f=new Form5();
+            if (files.SelectedNode == null) f.node = files.Nodes[0];
+            else f.node = files.SelectedNode;
+            f.file = true;
+            f.ShowDialog();
+        }
+
+        private void newFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form5 f = new Form5();
+            if (files.SelectedNode == null) f.node = files.Nodes[0];
+            else f.node = files.SelectedNode;
+            f.file = false;
+            f.ShowDialog();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            save();
+        }
+
+        private void runToolStripMenuItem_Click(object sender, EventArgs e)
         {
             runBoy();
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Form4().ShowDialog();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Router().transition(this, new Form3());
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            deletenode(files.SelectedNode);
+        }
+
+        private void tabs_ControlAdded(object sender, ControlEventArgs e)
+        {
+            saveToolStripButton.Enabled = true;
+            saveToolStripMenuItem.Enabled = true;
+            string file = tabs.SelectedTab.Tag.ToString();
+            if (file[file.Length - 1] == 'v' &&
+                file[file.Length - 2] == 'r' &&
+                file[file.Length - 3] == '.'
+                )
+            {
+                runStripButton1.Enabled = true;
+                runToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                runStripButton1.Enabled = false;
+                runToolStripMenuItem.Enabled = false;
+            }
+        }
+
+        private void tabs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            saveToolStripButton.Enabled = true;
+            saveToolStripMenuItem.Enabled = true;
+            string file = tabs.SelectedTab.Tag.ToString();
+            if (file[file.Length - 1] == 'v' &&
+                file[file.Length - 2] == 'r' &&
+                file[file.Length - 3] == '.'
+                )
+            {
+                runStripButton1.Enabled = true;
+                runToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                runStripButton1.Enabled = false;
+                runToolStripMenuItem.Enabled = false;
+            }
         }
     }
 }
