@@ -11,17 +11,17 @@
 #include "Read.h"
 #include "Write.h"
 #include "Parser.h"
+#include "Variable.h"
 
 int main()
 {
-	/*
-	Int* a = new Int(5);
+	/*Int* a = new Int(5);
 	Int* b = new Int(5);
 	Expression* exp = new Expression(a);
 	Expression* mult = new Expression(b);
 	Expression* encap = new Expression();
-	encap->push_back(exp, Operand(Operand::UNDEFINED));
-	encap->push_back(mult, Operand(Operand::MULTIPLY));
+	encap->push_back(exp, Operand('*'));
+	encap->push_back(mult);
 	Read* r = new Read(a);
 	Write* w = new Write(encap);
 	Return* ret = new Return;
@@ -38,12 +38,15 @@ int main()
 	p->add_expression(encap);
 	p->add_expression(mult);
 	p->add_expression(exp);
-	p->evaluate();
-	*/
+	Expression* pex = p;
+	Variable *ans=pex->evaluate();
+	delete ans;
+	return 0;*/
+	std::string path = "C:/Users/0Botn/OneDrive/Desktop/main.rv";
 
-	std::vector<std::string> tokens = Parser().gettokens();
-	
-	std::cout << '\n';
+	Parser *p = new Parser();
+	p->read_file(path)->evaluate();
+	delete p;
 	system("pause");
 	return 0;
 }

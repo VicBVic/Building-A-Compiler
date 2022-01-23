@@ -9,7 +9,6 @@ template <typename T=Variable> class Program : public Expression
 public:
 	Program()
 	{
-		ans = new T;
 	}
 	void add_argument(Argument* arg)
 	{
@@ -60,8 +59,7 @@ public:
 			curent = next;
 			next = curent->execute();
 		}
-
-		ans->copy_value(curent->get_value());
+		Variable* ans =curent->get_value();
 
 		//rebound
 		for (auto e : vars)
@@ -80,7 +78,6 @@ public:
 		return ans;
 	}
 private:
-	T *ans;
 	std::vector<Variable*> params;
 	std::vector<Variable*> vars;
 	std::vector<Expression*> expres;

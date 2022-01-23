@@ -13,6 +13,17 @@ void Expression::push_back(Expression* newMember, Operand operation)
     memberCount++;
 }
 
+void Expression::push_back_mem(Expression* newMember)
+{
+    members.push_back(newMember);
+    memberCount++;
+}
+
+void Expression::push_back_oper(Operand operation)
+{
+    operations.push_back(operation);
+}
+
 Expression* Expression::make_copy()
 {
     Expression* exp = new Expression;
@@ -39,9 +50,9 @@ Variable* Expression::evaluate()
         {
             Variable* memberValue=members[i]->evaluate();
 
-            if (ans->can_operate(memberValue, operations[i]))
+            if (ans->can_operate(memberValue, operations[i-1]))
             {
-                ans->operate(memberValue, operations[i]);
+                ans->operate(memberValue, operations[i-1]);
                 delete memberValue;
             }
             else

@@ -1,15 +1,40 @@
 #pragma once
-#include <string>
-#include "DataType.h"
 
-class Trie
+#include <string>
+#include <map>
+template <typename T> class Trie
 {
-private:
-	Trie *next[128];
-	Trie();
 public:
-	bool add(std::string &name, int pos, DataType &type);
-	DataType *get(std::string &name, int pos);
-	DataType *type;
+	Trie<T>()
+	{
+	}
+	void addLine(T end, std::string line, int poz = 0)
+	{
+		if (poz == line.size())
+		{
+			//de adaugat o conditie aici(nu vrem sa rescriem variabile)
+			this->end = end;
+			return;
+		}
+		if (next.find(line[poz]) == next.end()) next[line[poz]] = new Trie<T>;
+		addLine(end, line, poz + 1);
+	}
+
+
+	//din nou, nicio verificare, nimic
+	T getLine(std::string line, int poz = 0)
+	{
+		if (poz == line.size())
+		{
+			return this->end;
+		}
+		if (next.find(line[poz]) == next.end) return end;
+		return getLine(line, poz + 1);
+	}
+
+private:
+	std::map <char, Trie<T>* > next;
+	T end;
+
 };
 
