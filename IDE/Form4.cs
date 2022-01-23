@@ -42,13 +42,15 @@ namespace IDE
                 box.Text = project;
                 box.Enabled = false;
                 box.Height = 25;
-                box.Width = 475;
+                box.Width = 425;
                 Button button = new Button();
-                panel.Width = 650 ;
-                panel.Height = 25;
+                panel.Width = 525;
+                panel.Height = 30;
                 button.Text = "Remove";
                 button.Tag = project;
                 button.Click += new EventHandler(deleteclick);
+                button.Width = 75;
+                button.Height = 25;
                 panel.Controls.Add(box);
                 panel.Controls.Add(button);
                 projectlist.Controls.Add(panel);
@@ -65,7 +67,7 @@ namespace IDE
         private void save_Click(object sender, EventArgs e)
         {
             new Settings().setsettings(settings);
-            new Router().transition(this, new Form3());
+            Close();
         }
 
         private void deff_Click(object sender, EventArgs e)

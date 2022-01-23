@@ -73,6 +73,7 @@ namespace IDE
 
         private void createproject(object sender, FormClosingEventArgs e)
         {
+            (sender as creareProiect).Visible = false;
             if ((sender as creareProiect).fpath!="") {
                 openproject((sender as creareProiect).fpath);
             }
