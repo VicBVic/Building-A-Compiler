@@ -45,8 +45,19 @@ int main()
 	std::string path = "C:/Users/0Botn/OneDrive/Desktop/main.rv";
 
 	Parser *p = new Parser();
-	p->read_file(path)->evaluate();
+	Program<int> *pr = p->read_file(path);
+	if (pr == nullptr)
+	{
+		std::cout << "program aborted\n";
+		return 0;
+	}
+	Variable* rez = pr->evaluate();
+	int val;
+	rez->get_value(val);
+	std::cout << "program finished with code " << val << '\n';
+	delete rez;
 	delete p;
+	delete pr;
 	system("pause");
 	return 0;
 }

@@ -62,17 +62,17 @@ public:
 		Variable* ans =curent->get_value();
 
 		//rebound
-		for (auto e : vars)
+		for (auto e : new_vars)
 		{
-			delete new_vars[e];
+			delete e.second;
 		}
-		for (auto e : expres)
+		for (auto e : new_expres)
 		{
-			delete new_expres[e];
+			delete e.second;
 		}
-		for (auto e : args)
+		for (auto e : new_args)
 		{
-			delete new_args[e];
+			delete e.second;
 		}
 
 		return ans;

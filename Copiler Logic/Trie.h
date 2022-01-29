@@ -17,7 +17,8 @@ public:
 			return;
 		}
 		if (next.find(line[poz]) == next.end()) next[line[poz]] = new Trie<T>;
-		addLine(end, line, poz + 1);
+		next[line[poz]]->addLine(end, line, poz + 1);
+		return;
 	}
 
 
@@ -28,8 +29,8 @@ public:
 		{
 			return this->end;
 		}
-		if (next.find(line[poz]) == next.end) return end;
-		return getLine(line, poz + 1);
+		if (next.find(line[poz]) == next.end()) return end;
+		return next[line[poz]]->getLine(line, poz + 1);
 	}
 
 private:
