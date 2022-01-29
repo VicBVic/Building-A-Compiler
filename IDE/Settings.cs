@@ -13,25 +13,30 @@ namespace IDE
     internal class Settings
     {
 
-        public void resetToDefault()
+        public void resetToDefault(dynamic settings)
         {
-            StringWriter sw = new StringWriter(new StringBuilder());
-            JsonTextWriter writer = new JsonTextWriter(sw); 
-            writer.Formatting = Formatting.Indented;
-            writer.WriteStartObject();
-            writer.WritePropertyName("projectdir");
-            writer.WriteValue(Path.GetFullPath("Projects"));
-            writer.WritePropertyName("projects");
-            writer.WriteStartArray();
-            writer.WriteEndArray();
-            writer.WriteEndObject();
-            writer.Close();
-            File.WriteAllText("settings.json",sw.ToString());
+            //StringWriter sw = new StringWriter(new StringBuilder());
+            //JsonTextWriter writer = new JsonTextWriter(sw); 
+            //writer.Formatting = Formatting.Indented;
+            //writer.WriteStartObject();
+            //writer.WritePropertyName("projectdir");
+            //writer.WriteValue(Path.GetFullPath("Projects"));
+            //writer.WritePropertyName("projects");
+            //writer.WriteStartArray();
+            //writer.WriteEndArray();
+            //writer.WriteEndObject();
+            //writer.Close();
+            //File.WriteAllText("settings.json",sw.ToString());
+            settings.projectdir = Path.GetFullPath("Projects");
+            setsettings(settings);
         }
 
         public dynamic getsettings()
         {
             dynamic settings = new ExpandoObject();
+            settings.projectdir = "";
+            settings.projects = new List<string>();
+            if(!File.Exists("settings.json"))return settings;
             JsonTextReader reader = new JsonTextReader(new StringReader(File.ReadAllText("settings.json")));
             while (reader.Read())
             {
