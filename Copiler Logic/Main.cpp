@@ -42,7 +42,7 @@ int main()
 	Variable *ans=pex->evaluate();
 	delete ans;
 	return 0;*/
-	std::string path = "C:/Users/0Botn/OneDrive/Desktop/main.rv";
+	std::string path = "main.tmp";
 
 	Parser *p = new Parser();
 	p->read_file(path)->evaluate();
