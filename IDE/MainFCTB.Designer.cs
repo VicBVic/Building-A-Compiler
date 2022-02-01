@@ -1,6 +1,6 @@
 ﻿namespace IDE
 {
-    partial class Form1
+    partial class MainFCTB
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFCTB));
             this.splitter = new System.Windows.Forms.SplitContainer();
             this.files = new System.Windows.Forms.TreeView();
             this.tabs = new System.Windows.Forms.TabControl();

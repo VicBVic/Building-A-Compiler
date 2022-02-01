@@ -13,9 +13,9 @@ using System.Windows.Forms;
 
 namespace IDE
 {
-    public partial class Form1 : Form
+    public partial class MainFCTB : Form
     {
-        public Form1()
+        public MainFCTB()
         {
             InitializeComponent();
         }
@@ -169,7 +169,7 @@ namespace IDE
 
         private void newFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form5 f=new Form5();
+            NewFileorFolder f=new NewFileorFolder();
             if (files.SelectedNode == null) f.node = files.Nodes[0];
             else f.node = files.SelectedNode;
             f.file = true;
@@ -178,7 +178,7 @@ namespace IDE
 
         private void newFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form5 f = new Form5();
+            NewFileorFolder f = new NewFileorFolder();
             if (files.SelectedNode == null) f.node = files.Nodes[0];
             else f.node = files.SelectedNode;
             f.file = false;
@@ -197,12 +197,12 @@ namespace IDE
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Form4().ShowDialog();
+            new SettingsWindow().ShowDialog();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Router().transition(this, new Form3());
+            new Router().transition(this, new Main());
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)

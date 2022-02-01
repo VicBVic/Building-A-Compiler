@@ -13,11 +13,11 @@ using System.IO;
 
 namespace IDE
 {
-    public partial class Form3 : Form
+    public partial class Main : Form
     {
         public dynamic settings = new ExpandoObject();
 
-        public Form3()
+        public Main()
         {
             InitializeComponent();
         }
@@ -25,7 +25,7 @@ namespace IDE
         public void openproject(string path)
         {
             Directory.CreateDirectory(path);
-            Form1 f = new Form1();
+            MainFCTB f = new MainFCTB();
             f.projectpath = path;
             new Router().transition(this, f);
         }
@@ -118,7 +118,7 @@ namespace IDE
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!addproject()) return;
-            Form1 f=new Form1();
+            MainFCTB f=new MainFCTB();
             f.settings=settings;
             f.projectpath=folderBrowserDialog1.SelectedPath;
             f.ShowDialog();
@@ -131,7 +131,7 @@ namespace IDE
 
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           new Form4().ShowDialog();
+           new SettingsWindow().ShowDialog();
         }
     }
 }
