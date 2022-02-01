@@ -11,11 +11,11 @@ using System.IO;
 
 namespace IDE
 {
-    public partial class Form5 : Form
+    public partial class NewFileorFolder : Form
     {
         public TreeNode node;
         public bool file;
-        public Form5()
+        public NewFileorFolder()
         {
             InitializeComponent();
         }
@@ -23,12 +23,12 @@ namespace IDE
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
             int val = e.KeyValue;
-            e.SuppressKeyPress = !((val >= 'a' && val <= 'z') || (val >= 'A' && val <= 'Z') || (val >= '0' && val <= '9') || (val == ' ') || (val == 8));
+            e.SuppressKeyPress = !((val >= 'a' && val <= 'z') || (val >= 'A' && val <= 'Z') || (val >= '0' && val <= '9') || (val == ' ') || (val == 8)|| (val==190));
         }
 
         private void Form5_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void save_Click(object sender, EventArgs e)
@@ -44,7 +44,12 @@ namespace IDE
                 node.Nodes[node.Nodes.Count - 1].Tag = path;
                 if(file)File.Create(path).Close();
                 else Directory.CreateDirectory(path);
-                if (file) node.Nodes[node.Nodes.Count - 1].ImageIndex = 1;
+                if (file) 
+                {
+                    node.Nodes[node.Nodes.Count - 1].ImageIndex = 1;
+                    node.Nodes[node.Nodes.Count - 1].SelectedImageIndex = 1;
+                }
+                
                 Close();
             }
         }

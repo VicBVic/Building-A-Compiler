@@ -1,6 +1,6 @@
 ﻿namespace IDE
 {
-    partial class Form4
+    partial class SettingsWindow
     {
         /// <summary>
         /// Required designer variable.

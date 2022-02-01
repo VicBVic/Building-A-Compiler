@@ -156,14 +156,28 @@ namespace IDE
             Directory.Delete(path, true);
         }
 
+        private void deletefile(string path)
+        {
+            File.Delete(path);
+            for(int i=0;i<tabs.TabCount;i++)
+            {
+                if(tabs.TabPages[i].Tag.ToString() == path)
+                {
+                    tabs.TabPages.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+
         private void deletenode(TreeNode node)
         {
-            if(node.Tag == null)
+            if(node.Tag == projectpath)
             {
                 MessageBox.Show("Cannot delete the root folder!");
                 return;
             }
-            deletefolder(node.Tag.ToString());
+            if (node.ImageIndex == 0) deletefolder(node.Tag.ToString());
+            else deletefile(node.Tag.ToString());
             node.Remove();
         }
 
@@ -172,6 +186,11 @@ namespace IDE
             NewFileorFolder f=new NewFileorFolder();
             if (files.SelectedNode == null) f.node = files.Nodes[0];
             else f.node = files.SelectedNode;
+            if (!Directory.Exists(f.node.Tag.ToString()))
+            {
+                MessageBox.Show("You must select a folder!");
+                return;
+            }
             f.file = true;
             f.ShowDialog();
         }
@@ -181,6 +200,11 @@ namespace IDE
             NewFileorFolder f = new NewFileorFolder();
             if (files.SelectedNode == null) f.node = files.Nodes[0];
             else f.node = files.SelectedNode;
+            if (!Directory.Exists(f.node.Tag.ToString()))
+            {
+                MessageBox.Show("You must select a folder!");
+                return;
+            }
             f.file = false;
             f.ShowDialog();
         }
@@ -207,7 +231,8 @@ namespace IDE
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            deletenode(files.SelectedNode);
+            DialogResult result=MessageBox.Show("Are you sure you want to delete " + files.SelectedNode.Tag.ToString() +" ?","Are you sure ?", MessageBoxButtons.YesNo);
+            if(result==DialogResult.Yes)deletenode(files.SelectedNode);
         }
 
         private void tabs_ControlAdded(object sender, ControlEventArgs e)
@@ -234,11 +259,20 @@ namespace IDE
         {
             saveToolStripButton.Enabled = true;
             saveToolStripMenuItem.Enabled = true;
-            string file = tabs.SelectedTab.Tag.ToString();
-            if (file[file.Length - 1] == 'v' &&
+            string file = "";
+            if (tabs.SelectedTab == null)
+            {
+                saveToolStripButton.Enabled = false;
+                saveToolStripMenuItem.Enabled = false;
+                runStripButton1.Enabled = false;
+                runToolStripMenuItem.Enabled = false;
+                return;
+            }
+            if (
+                file[file.Length - 1] == 'v' &&
                 file[file.Length - 2] == 'r' &&
                 file[file.Length - 3] == '.'
-                )
+               )
             {
                 runStripButton1.Enabled = true;
                 runToolStripMenuItem.Enabled = true;

@@ -11,11 +11,11 @@ using System.Dynamic;
 
 namespace IDE
 {
-    public partial class Form4 : Form
+    public partial class SettingsWindow : Form
     {
 
         public dynamic settings;
-        public Form4()
+        public SettingsWindow()
         {
             InitializeComponent();
         }
