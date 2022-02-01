@@ -12,6 +12,7 @@
 #include "Write.h"
 #include "Parser.h"
 #include "Variable.h"
+#include "Lexer.h"
 
 int main()
 {
@@ -43,7 +44,7 @@ int main()
 	delete ans;
 	return 0;*/
 	std::string path = "C:/Users/0Botn/OneDrive/Desktop/main.rv";
-
+	/*
 	Parser *p = new Parser();
 	Program<int> *pr = p->read_file(path);
 	if (pr == nullptr)
@@ -58,6 +59,10 @@ int main()
 	delete rez;
 	delete p;
 	delete pr;
-	system("pause");
+	system("pause");*/
+
+	Lexer *l = new Lexer;
+	std::ifstream f(path);
+	std::cout << l->lex_file(f) << '\n';
 	return 0;
 }

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Parser.h"
 #include "Int.h"
 #include "String.h"
@@ -15,9 +15,9 @@ Parser::Parser()
 {
 	//aici pui ce vrei sa rezervi
 
-	reserved.addLine(initInt(ADDINT), "int");
-	reserved.addLine(initInt(ADDSTRING), "string");
-	reserved.addLine(initInt(ADDFLOAT), "float");
+	reserved.addLine(initInt(DEFINT), "int");
+	reserved.addLine(initInt(DEFSTRING), "string");
+	reserved.addLine(initInt(DEFFLOAT), "float");
 	reserved.addLine(initInt(WRITE), "write");
 	reserved.addLine(initInt(RETURN), "return");
 	
@@ -39,17 +39,20 @@ Parser::Parser()
 
 Program<int> *Parser::read_file(std::string file)
 {
-	int line_count = 0;
 
+
+
+	int line_count = 0;
+	Program<int>* ans = new Program<int>;
 	try 
 	{
 
 
 		std::ifstream f(file);
-		if (!f.good()) throw(1);
+		if (!f.good()) throw(error::CANT_OPEN);
 
 
-		Program<int>* ans = new Program<int>;
+		
 
 		std::stack<Argument*> thread;
 		Trie<Variable*> vars;
@@ -61,60 +64,47 @@ Program<int> *Parser::read_file(std::string file)
 			std::string a = get_next_token(f,line_count);
 			char sep = a.back();
 			a.pop_back();
-			std::cout << a << ' ' << sep << '\n';
+			//std::cout << a << ' ' << sep << '\n';
 			if (sep == ':')
 			{
 				int rezVal = reserved.getLine(a).val;
 				switch (rezVal)
 				{
 				case 0:
-					throw(2);
+					throw(error::UNDEF_ARG);
 					break;
-				case ADDINT:
-				case ADDSTRING:
-				case ADDFLOAT:
+				case DEFINT:
+				case DEFSTRING:
+				case DEFFLOAT:
 					read_var(ans, f, line_count, rezVal, vars, thread);
 					break;
 				case WRITE:
 					read_write(ans, f, line_count, vars, thread);
 					break;
 				case RETURN:
-					read_return(ans, f, line_count, thread);
+					read_return(ans, f, line_count, vars, thread);
 					flag=0;
 					break;
 				default:
-					throw(-1);
+					throw(error::UNDEF_ARG);
 				}
 			}
-			else throw(-1);
+			else throw(error::UNDEF_SYM);
 		}
 		//Write* arg = new Write(exp);
 		//ans->add_argument(arg);
 
 		return ans;
 	}
-	catch(int err)
+	catch (error err)
 	{
-		switch (err)
-		{
-		case 1:
-			std::cout << "Could not open file. Error code : " << err << "\n";
-			break;
-		case 2:
-			std::cout << "Could not find argument at line "<< line_count<<". Error code : " << err << "\n";
-			break;
-		case 3:
-			std::cout << "Missing semicolon on line " << line_count << ". Error code : "<< err << "\n";
-			break;
-		default:
-			std::cout << "An unhandled exception occured. Error code : "<<err<<"\n";
-			break;
-		}
+		delete ans;
+		give_error_message(err, line_count);
 	}
 	return nullptr;
 }
 
-Expression* Parser::read_expression(Program<int>* p,std::ifstream &f, int &line_count)
+Expression* Parser::read_expression(Program<int>* p,std::ifstream &f, int &line_count, Trie<Variable*>& vars)
 {
 	std::stack<Expression*> expr;
 	expr.push(new Expression);
@@ -139,6 +129,13 @@ Expression* Parser::read_expression(Program<int>* p,std::ifstream &f, int &line_
 				p->add_variable(var);
 				expr.top()->push_back_mem(ex);
 			}
+			else
+			{
+				Variable* var = vars.getLine(a);
+				Expression* ex = new Expression(var);
+				p->add_expression(ex);
+				expr.top()->push_back_mem(ex);
+			}
 		}
 		Expression* ex;
 		switch (sep)
@@ -150,6 +147,7 @@ Expression* Parser::read_expression(Program<int>* p,std::ifstream &f, int &line_
 			expr.push(ex);
 			break;
 		case ')':
+			if (expr.empty()) throw(error::MISSING_PARAN);
 			expr.pop();
 			break;
 		case '*':
@@ -161,24 +159,22 @@ Expression* Parser::read_expression(Program<int>* p,std::ifstream &f, int &line_
 		case ';':
 			eoe = 1;
 			break;
+		default:
+			throw(error::UNDEF_SYM);
 		}
 	}
 	//Argument* show = new Write(expr.top());
 	//ans->add_argument(show);
+
+	if (expr.size() != 1) throw(error::MISSING_PARAN);
+
 	p->add_expression(expr.top());
 	return expr.top();
 }
 
 void Parser::read_write(Program<int>* p, std::ifstream& f, int& line_count, Trie<Variable*>& vars, std::stack<Argument*> &thread)
 {
-	std::string name;
-	char eq;
-	name = get_next_token(f, line_count);
-	eq = name.back();
-	name.pop_back();
-	if (eq != ';') throw(3);
-	Variable* var = vars.getLine(name);
-	Expression* exp = new Expression(var);
+	Expression* exp = read_expression(p,f,line_count,vars);
 
 	p->add_expression(exp);
 
@@ -190,9 +186,9 @@ void Parser::read_write(Program<int>* p, std::ifstream& f, int& line_count, Trie
 	p->add_argument(arg);
 }
 
-void Parser::read_return(Program<int>* p, std::ifstream& f, int& line_count, std::stack<Argument*> &thread)
+void Parser::read_return(Program<int>* p, std::ifstream& f, int& line_count, Trie<Variable*> &vars, std::stack<Argument*> &thread)
 {
-	Expression* exp = read_expression(p, f, line_count);
+	Expression* exp = read_expression(p, f, line_count, vars);
 
 	p->add_expression(exp);
 
@@ -204,6 +200,32 @@ void Parser::read_return(Program<int>* p, std::ifstream& f, int& line_count, std
 	p->add_argument(arg);
 }
 
+void Parser::give_error_message(error error, int line_count)
+{
+
+		switch (error)
+		{
+		case error::CANT_OPEN:
+			std::cout << "Could not open file. Error code : " << (int)(error) << "\n";
+			break;
+		case error::UNDEF_ARG:
+			std::cout << "Could not	identify argument at line " << line_count << ". Error code : " << (int)(error) << "\n";
+			break;
+		case error::UNDEF_SYM:
+			std::cout << "Could not	identify symbol at line " << line_count << ". Error code : " << (int)(error) << "\n";
+			break;
+		case error::MISSING_SEMICOLON:
+			std::cout << "Missing semicolon on line " << line_count << ". Error code : " << (int)(error) << "\n";
+			break;
+		case error::MISSING_PARAN:
+			std::cout << "Missing pharanthesis on line " << line_count << ". Error code : " << (int)(error) << "\n";
+			break;
+		default:
+			std::cout << "An unhandled exception occured. Error code : " << (int)(error) << "\n";
+			break;
+		}
+}
+
 void Parser::read_var(Program<int>* p, std::ifstream& f, int& line_count, int var_type, Trie<Variable*> &vars, std::stack<Argument*> &thread) 
 {
 	Variable* var;
@@ -211,13 +233,13 @@ void Parser::read_var(Program<int>* p, std::ifstream& f, int& line_count, int va
 	char eq;
 	switch (var_type)
 	{
-	case ADDINT:
+	case DEFINT:
 		var = new Int;
 		break;
-	case ADDSTRING:
+	case DEFSTRING:
 		var = new String;
 		break;
-	case ADDFLOAT:
+	case DEFFLOAT:
 		var = new Float;
 	default:
 		var = new Variable;
@@ -233,7 +255,7 @@ void Parser::read_var(Program<int>* p, std::ifstream& f, int& line_count, int va
 
 	if (eq == '=')
 	{
-		Expression* exp = read_expression(p, f, line_count);
+		Expression* exp = read_expression(p, f, line_count, vars);
 		SetVar* arg = new SetVar;
 		arg->set_target(var);
 		arg->set_assign(exp);
@@ -245,7 +267,7 @@ void Parser::read_var(Program<int>* p, std::ifstream& f, int& line_count, int va
 	}
 	else if (eq != ';')
 	{
-		throw(3);
+		throw(error::MISSING_SEMICOLON);
 	}
 	return;
 }
@@ -260,6 +282,6 @@ std::string Parser::get_next_token(std::ifstream &f,int &line_count)
 		if(ignores[c]==0) ans.push_back(c);
 		if (separators[c] == 1) break;
 	}
-
+	if (ans.size() == 0) throw(error::MISSING_TEXT);
 	return ans;
 }

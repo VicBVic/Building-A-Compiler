@@ -150,6 +150,7 @@
     <ClInclude Include="Expression.h" />
     <ClInclude Include="Float.h" />
     <ClInclude Include="Int.h" />
+    <ClInclude Include="Lexer.h" />
     <ClInclude Include="Operand.h" />
     <ClInclude Include="Parser.h" />
     <ClInclude Include="Trie.h" />
@@ -167,6 +168,7 @@
     <ClCompile Include="Expression.cpp" />
     <ClCompile Include="Float.cpp" />
     <ClCompile Include="Int.cpp" />
+    <ClCompile Include="Lexer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Operand.cpp" />
     <ClCompile Include="Parser.cpp" />

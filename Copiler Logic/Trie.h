@@ -8,6 +8,11 @@ public:
 	Trie<T>()
 	{
 	}
+	Trie<T>(T defVal)
+	{
+		this->end = defVal;
+		this->defVal = defVal;
+	}
 	void addLine(T end, std::string line, int poz = 0)
 	{
 		if (poz == line.size())
@@ -16,7 +21,7 @@ public:
 			this->end = end;
 			return;
 		}
-		if (next.find(line[poz]) == next.end()) next[line[poz]] = new Trie<T>;
+		if (next.find(line[poz]) == next.end()) next[line[poz]] = new Trie<T>(defVal);
 		next[line[poz]]->addLine(end, line, poz + 1);
 		return;
 	}
@@ -29,13 +34,12 @@ public:
 		{
 			return this->end;
 		}
-		if (next.find(line[poz]) == next.end()) return end;
+		if (next.find(line[poz]) == next.end()) return defVal;
 		return next[line[poz]]->getLine(line, poz + 1);
 	}
 
 private:
 	std::map <char, Trie<T>* > next;
-	T end;
-
+	T end,defVal;
 };
 
