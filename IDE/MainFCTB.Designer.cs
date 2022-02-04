@@ -1,6 +1,6 @@
 ﻿namespace IDE
 {
-    partial class Form1
+    partial class MainFCTB
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFCTB));
             this.splitter = new System.Windows.Forms.SplitContainer();
             this.files = new System.Windows.Forms.TreeView();
             this.tabs = new System.Windows.Forms.TabControl();
@@ -67,8 +67,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitter.Location = new System.Drawing.Point(0, 65);
-            this.splitter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.splitter.Location = new System.Drawing.Point(0, 80);
+            this.splitter.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.splitter.Name = "splitter";
             // 
             // splitter.Panel1
@@ -78,17 +78,18 @@
             // splitter.Panel2
             // 
             this.splitter.Panel2.Controls.Add(this.tabs);
-            this.splitter.Size = new System.Drawing.Size(800, 385);
-            this.splitter.SplitterDistance = 149;
+            this.splitter.Size = new System.Drawing.Size(1067, 474);
+            this.splitter.SplitterDistance = 198;
+            this.splitter.SplitterWidth = 5;
             this.splitter.TabIndex = 3;
             // 
             // files
             // 
             this.files.Dock = System.Windows.Forms.DockStyle.Fill;
             this.files.Location = new System.Drawing.Point(0, 0);
-            this.files.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.files.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.files.Name = "files";
-            this.files.Size = new System.Drawing.Size(147, 383);
+            this.files.Size = new System.Drawing.Size(196, 472);
             this.files.TabIndex = 0;
             // 
             // tabs
@@ -98,8 +99,8 @@
             this.tabs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabs.Name = "tabs";
             this.tabs.SelectedIndex = 0;
-            this.tabs.Size = new System.Drawing.Size(645, 383);
-            this.tabs.TabIndex = 2;
+            this.tabs.Size = new System.Drawing.Size(862, 472);
+            this.tabs.TabIndex = 0;
             this.tabs.SelectedIndexChanged += new System.EventHandler(this.tabs_SelectedIndexChanged);
             this.tabs.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.tabs_ControlAdded);
             // 
@@ -112,8 +113,8 @@
             this.settingsToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menu.Size = new System.Drawing.Size(800, 28);
+            this.menu.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            this.menu.Size = new System.Drawing.Size(1067, 30);
             this.menu.TabIndex = 4;
             // 
             // fileToolStripMenuItem
@@ -127,7 +128,7 @@
             this.toolStripSeparator2,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
             this.fileToolStripMenuItem.Text = "&File";
             // 
             // newFileToolStripMenuItem
@@ -191,7 +192,7 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.runToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(58, 26);
             this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // runToolStripMenuItem
@@ -206,7 +207,7 @@
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(76, 24);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(76, 26);
             this.settingsToolStripMenuItem.Text = "&Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
@@ -220,9 +221,9 @@
             this.saveToolStripButton,
             this.toolStripSeparator7,
             this.runStripButton1});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 28);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 30);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1067, 31);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -232,7 +233,7 @@
             this.newToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripButton.Image")));
             this.newToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.newToolStripButton.Name = "newToolStripButton";
-            this.newToolStripButton.Size = new System.Drawing.Size(29, 24);
+            this.newToolStripButton.Size = new System.Drawing.Size(29, 28);
             this.newToolStripButton.Text = "&New";
             this.newToolStripButton.ToolTipText = "New file";
             this.newToolStripButton.Click += new System.EventHandler(this.newFileToolStripMenuItem_Click);
@@ -243,7 +244,7 @@
             this.openToolStripButton.Image = global::IDE.Properties.Resources._2022_01_20;
             this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripButton.Name = "openToolStripButton";
-            this.openToolStripButton.Size = new System.Drawing.Size(29, 24);
+            this.openToolStripButton.Size = new System.Drawing.Size(29, 28);
             this.openToolStripButton.Text = "&Open";
             this.openToolStripButton.ToolTipText = "New folder";
             this.openToolStripButton.Click += new System.EventHandler(this.newFolderToolStripMenuItem_Click);
@@ -254,9 +255,9 @@
             this.toolStripButton1.Image = global::IDE.Properties.Resources.close_;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(29, 24);
+            this.toolStripButton1.Size = new System.Drawing.Size(29, 28);
             this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.ToolTipText = "Close";
+            this.toolStripButton1.ToolTipText = "Delete";
             this.toolStripButton1.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // saveToolStripButton
@@ -265,7 +266,7 @@
             this.saveToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripButton.Image")));
             this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripButton.Name = "saveToolStripButton";
-            this.saveToolStripButton.Size = new System.Drawing.Size(29, 24);
+            this.saveToolStripButton.Size = new System.Drawing.Size(29, 28);
             this.saveToolStripButton.Text = "&Save";
             this.saveToolStripButton.ToolTipText = "Save ";
             this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
@@ -273,7 +274,7 @@
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 31);
             // 
             // runStripButton1
             // 
@@ -281,7 +282,7 @@
             this.runStripButton1.Image = global::IDE.Properties.Resources.run;
             this.runStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.runStripButton1.Name = "runStripButton1";
-            this.runStripButton1.Size = new System.Drawing.Size(29, 24);
+            this.runStripButton1.Size = new System.Drawing.Size(29, 28);
             this.runStripButton1.Text = "toolStripButton1";
             this.runStripButton1.ToolTipText = "Run";
             this.runStripButton1.Click += new System.EventHandler(this.runToolStripMenuItem_Click);
@@ -293,26 +294,16 @@
             this.imageList1.Images.SetKeyName(0, "folder.png");
             this.imageList1.Images.SetKeyName(1, "file.jpeg");
             // 
-            // tabs
+            // MainFCTB
             // 
-            this.tabs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabs.Location = new System.Drawing.Point(0, 0);
-            this.tabs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabs.Name = "tabs";
-            this.tabs.SelectedIndex = 0;
-            this.tabs.Size = new System.Drawing.Size(483, 308);
-            this.tabs.TabIndex = 0;
-            // 
-            // Form1
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menu);
             this.Controls.Add(this.splitter);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.Name = "MainFCTB";
             this.Text = "IDERV";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.ResizeForm);

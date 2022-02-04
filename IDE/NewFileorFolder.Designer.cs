@@ -1,6 +1,6 @@
 ﻿namespace IDE
 {
-    partial class Form5
+    partial class NewFileorFolder
     {
         /// <summary>
         /// Required designer variable.
