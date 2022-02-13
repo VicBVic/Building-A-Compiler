@@ -6,7 +6,7 @@ Acesta este un compilator de cod menit ca metoda de invatare despre procesul de 
 # INSTRUCTIUNI DE UTILIZARE
 
 - Descarcati proiectul si deschideti-l in Visual Studio 2022.
-- In meniul SolutionExplorer, faceti click dreapta pe IDE, apoi apasati Debug-> Start New Instance
+- In meniul SolutionExplorer, faceti click dreapta pe IDE, apoi apasati Debug-> Start New Instance.
 - Veti fi trimisi in Interfata proiectului, de unde veti putea adauga si edita proiecte.
 
 # CREDITS
