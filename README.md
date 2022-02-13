@@ -1,21 +1,14 @@
-# Compiler-Logic
-Sum copiler that we're working on
-https://trello.com/invite/b/6B7ZBc5d/f63a1d8bb24ee8656bbd08e0e04838b2/compiler-logic
+# DESPRE
 
-# Guide-Lines
- - In headerul fiecarei clase trebuie sa fie o schita in compentariu despre cum ar trebui utilizata clasa
- - Lucreaza fiecare pe branchul sau
- - Adaugam aici ce mai trebuie adaugat
+Acesta este un compilator de cod menit ca metoda de invatare despre procesul de compilare.
 
-nuget.org
-https://www.nuget.org/api/v2/
 
-https://marketplace.visualstudio.com/items?itemName=VisualStudioClient.MicrosoftVisualStudio2022InstallerProjects
+# INSTRUCTIUNI DE UTILIZARE
 
-# GENERARE COMPILER IN IDE
+- Descarcati proiectul si deschideti-l in Visual Studio 2022.
+- In meniul SolutionExplorer, faceti click dreapta pe IDE, apoi apasati Debug-> Start New Instance
+- VEti fi trimisi in Interfata proiectului, de unde veti putea adauga si edita proiecte.
 
-$(SolutionDir)IDE\bin\Debug\Compiler
+# CREDITS
+- Compilatorul si logica sa au fost facute de Victor Botnaru, iar interfata, deAcatrinei Robert Marian, ambii elevi in clasa a 10a la Liceul International de Informatica Constanta
 
-IDE\bin\Debug\Compiler
-
-Compiler
